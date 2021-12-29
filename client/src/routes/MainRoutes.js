@@ -8,6 +8,7 @@ import Loadable from 'ui-component/Loadable';
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
 // utilities routing
+const WineLabelImageRegister = Loadable(lazy(() => import('views/pages/authentication/authentication3/WineLabelImageRegister')));
 const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')));
 const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
@@ -29,6 +30,10 @@ const MainRoutes = {
         {
             path: '/dashboard/default',
             element: <DashboardDefault />
+        },
+        {
+            path: '/wineLabel',
+            element: <WineLabelImageRegister />
         },
         {
             path: '/utils/util-typography',

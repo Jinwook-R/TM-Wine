@@ -30,11 +30,11 @@ const Header = ({ handleLeftDrawerToggle }) => {
                     }
                 }}
             >
-                <Box component="span" sx={{ display: { xs: 'none', md: 'block' }, flexGrow: 1 }}>
+                <Box component="span" sx={{ display: { xs: 'block', md: 'block' }, flexGrow: 1 }}>
                     <LogoSection />
                 </Box>
-                <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
-                    <Avatar
+                {/* <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}> */}
+                {/* <Avatar
                         variant="rounded"
                         sx={{
                             ...theme.typography.commonAvatar,
@@ -51,14 +51,14 @@ const Header = ({ handleLeftDrawerToggle }) => {
                         color="inherit"
                     >
                         <IconMenu2 stroke={1.5} size="1.3rem" />
-                    </Avatar>
-                </ButtonBase>
+                    </Avatar> */}
+                {/* </ButtonBase> */}
             </Box>
-            <SearchSection />
-            {/* <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ flexGrow: 1 }} /> */}
-            {/* notification & profile */}
-            {/* <NotificationSection />
+            {/* <SearchSection />
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ flexGrow: 1 }} />
+            notification & profile 
+            <NotificationSection />
             <ProfileSection /> */}
         </>
     );
