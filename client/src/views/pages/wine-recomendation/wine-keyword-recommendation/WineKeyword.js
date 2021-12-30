@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
-import { Box, Button, Divider, Grid } from '@mui/material';
+import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 // project imports
@@ -11,26 +11,6 @@ import { wineInfoByImageAction } from '../../../../store/reducers/wine';
 import WineRecommendationDialog from '../WineRecommendationDialog';
 
 // ============================|| WineLabelImage ||============================ //
-
-const styledImage = makeStyles({
-    root: {
-        position: 'relative',
-        display: 'block',
-        height: '550px',
-        borderWidth: '1px',
-        border: '1px #B39CD0 solid',
-        '& img': {
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            top: 0,
-            left: 0,
-            bottom: 0,
-            margin: 'auto'
-        }
-    }
-});
 
 const styledInput = makeStyles({
     root: {
@@ -50,8 +30,7 @@ const styledInput = makeStyles({
     }
 });
 
-const WineLabelImage = () => {
-    const classes = styledImage();
+const WineKeyword = () => {
     const inputClasses = styledInput();
     const [fileList, setFileList] = useState('');
     const dispatch = useDispatch();
@@ -86,18 +65,12 @@ const WineLabelImage = () => {
             <Grid container direction="column" justifyContent="center" spacing={2}>
                 <Grid item xs={12}>
                     <div className="custom__img">
-                        <div className={classes.root} id="img__box">
-                            <p style={{ textAlign: 'center', marginTop: 250 }}>
-                                <h3 style={{ color: '#B0A8B9' }}>와인 라벨 사진을 업로드 하세요:)</h3>
-                            </p>
-                        </div>
+                        <FormGroup>
+                            <FormControlLabel control={<Checkbox defaultChecked />} label="단맛이 좋아요" />
+                            <FormControlLabel control={<Checkbox />} label="탄산이 좋아요" />
+                            <FormControlLabel control={<Checkbox />} label="쓴맛이 좋아요" />
+                        </FormGroup>
                     </div>
-                    <form className="upload__input" style={{ display: 'block' }}>
-                        <label className={inputClasses.root} for="inputImage">
-                            파일 업로드
-                            <input type="file" id="inputImage" accept="img/*" onChange={onLoadFile} style={{ display: 'none' }} />
-                        </label>
-                    </form>
                 </Grid>
                 <Grid item xs={12}>
                     <Box
@@ -130,4 +103,4 @@ const WineLabelImage = () => {
     );
 };
 
-export default WineLabelImage;
+export default WineKeyword;
