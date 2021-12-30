@@ -8,7 +8,14 @@ import Loadable from 'ui-component/Loadable';
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
 // utilities routing
-const WineLabelImageRegister = Loadable(lazy(() => import('views/pages/authentication/authentication3/WineLabelImageRegister')));
+const WineLabelImageRecommendation = Loadable(
+    lazy(() => import('views/pages/wine-recomendation/wine-label-image-recommendation/WineLabelImageRecommendation'))
+);
+
+const WineKeywordRecommendation = Loadable(
+    lazy(() => import('views/pages/wine-recomendation/wine-keyword-recommendation/WineKeywordRecommendation'))
+);
+
 const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')));
 const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
@@ -33,7 +40,11 @@ const MainRoutes = {
         },
         {
             path: '/wineLabel',
-            element: <WineLabelImageRegister />
+            element: <WineLabelImageRecommendation />
+        },
+        {
+            path: '/wineKeyword',
+            element: <WineKeywordRecommendation />
         },
         {
             path: '/utils/util-typography',

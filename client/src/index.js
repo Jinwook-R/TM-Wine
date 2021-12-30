@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import configureStore from './store/configureStore';
 
 // third party
 import { BrowserRouter } from 'react-router-dom';
@@ -7,15 +8,13 @@ import { Provider } from 'react-redux';
 // project imports
 import * as serviceWorker from 'serviceWorker';
 import App from 'App';
-import { store } from 'store';
 
 // style + assets
 import 'assets/scss/style.scss';
 
 // ==============================|| REACT DOM RENDER  ||============================== //
-
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={configureStore()}>
         <BrowserRouter>
             <App />
         </BrowserRouter>

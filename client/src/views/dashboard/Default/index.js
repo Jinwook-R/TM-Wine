@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 // material-ui
-import { Grid } from '@mui/material';
+import { Grid, List, Box } from '@mui/material';
 
 // project imports
 import WineLabelSearch from './WineLabelSearch';
@@ -18,20 +18,20 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <Grid container spacing={gridSpacing}>
-            <Grid item xs={12}>
-                <Grid container spacing={gridSpacing}>
-                    <Grid item lg={6} md={6} sm={6} xs={12}>
-                        <Link to="/free/wineLabel">
-                            <WineLabelSearch isLoading={isLoading} />
-                        </Link>
-                    </Grid>
-                    <Grid item lg={6} md={6} sm={6} xs={12}>
+        <Box className="mainSelect" sx={{ maxWidth: 1250, margin: '0 auto' }}>
+            <Grid container spacing={gridSpacing}>
+                <Grid item xs={12} lg={6} md={6}>
+                    <Link to="/free/wineLabel" style={{ textDecoration: 'none' }}>
+                        <WineLabelSearch isLoading={isLoading} />
+                    </Link>
+                </Grid>
+                <Grid item xs={12} lg={6} md={6}>
+                    <Link to="/free/wineKeyword" style={{ textDecoration: 'none' }}>
                         <WineRecommendation isLoading={isLoading} />
-                    </Grid>
+                    </Link>
                 </Grid>
             </Grid>
-        </Grid>
+        </Box>
     );
 };
 

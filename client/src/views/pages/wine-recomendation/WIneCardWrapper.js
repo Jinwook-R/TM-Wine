@@ -9,7 +9,7 @@ import { borderRadius } from '@mui/system';
 
 // ==============================|| AUTHENTICATION CARD WRAPPER ||============================== //
 
-const AuthCardWrapper = ({ children, ...other }) => (
+const WIneCardWrapper = ({ children, ...other }) => (
     <MainCard
         sx={{
             // backgroundColor: '#E0F4FD',
@@ -29,8 +29,8 @@ const AuthCardWrapper = ({ children, ...other }) => (
     </MainCard>
 );
 
-AuthCardWrapper.propTypes = {
+WIneCardWrapper.propTypes = {
     children: PropTypes.node
 };
 
-export default AuthCardWrapper;
+export default WIneCardWrapper;
