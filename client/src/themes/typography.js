@@ -87,13 +87,11 @@ export default function themeTypography(theme) {
             }
         },
         mainContent: {
-            backgroundColor: theme.background,
             width: '100%',
-            minHeight: 'calc(100vh - 88px)',
+            minHeight: 'calc(100vh - 75px)',
             flexGrow: 1,
-            padding: '20px',
-            marginTop: '88px',
-            marginRight: '20px',
+            padding: '30px',
+            marginTop: '75px',
             borderRadius: `${theme?.customization?.borderRadius}px`
         },
         menuCaption: {

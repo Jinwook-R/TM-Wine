@@ -24,48 +24,29 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
 const MainLayout = () => {
     const theme = useTheme();
     const matchDownMd = useMediaQuery(theme.breakpoints.down('lg'));
-
-    // Handle left drawer
-    const leftDrawerOpened = useSelector((state) => state.customization.opened);
     const dispatch = useDispatch();
-    const handleLeftDrawerToggle = () => {
-        dispatch({ type: SET_MENU, opened: !leftDrawerOpened });
-    };
 
     useEffect(() => {
         dispatch({ type: SET_MENU, opened: !matchDownMd });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [matchDownMd]);
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            {/* header */}
             <AppBar
-                enableColorOnDark
                 position="fixed"
                 color="inherit"
-                elevation={0}
-                sx={{
-                    bgcolor: theme.palette.background.default,
-                    transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
-                }}
+                style={{ boxShadow: '0 1px 4px 0 rgb(30 30 30 / 20%)', height: 80, padding: '0 30px' }}
             >
-                <Toolbar>
-                    <Header handleLeftDrawerToggle={handleLeftDrawerToggle} />
-                </Toolbar>
+                <Header />
             </AppBar>
 
-            {/* drawer */}
             {/* <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} /> */}
 
             {/* main content */}
             <Main theme={theme}>
-                {/* breadcrumb */}
                 {/* <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign /> */}
                 <Outlet />
             </Main>
-            {/* <Customization /> */}
         </Box>
     );
 };

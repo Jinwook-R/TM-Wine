@@ -14,9 +14,7 @@ const styledName = makeStyles({
     root: {
         position: 'absolute',
         fontSize: 20,
-        fontWeight: 'medium',
-        paddingTop: 10,
-        lineHeight: 2
+        lineHeight: 4
     }
 });
 
@@ -24,9 +22,6 @@ const LogoSection = () => {
     const classes = styledName();
     return (
         <>
-            <ButtonBase disableRipple component={Link} to={config.defaultPath}>
-                <Logo />
-            </ButtonBase>
             <span className={classes.root}>TM-WINE</span>
         </>
     );
