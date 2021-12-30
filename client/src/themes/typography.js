@@ -90,9 +90,7 @@ export default function themeTypography(theme) {
             width: '100%',
             minHeight: 'calc(100vh - 75px)',
             flexGrow: 1,
-            padding: '30px',
-            marginTop: '75px',
-            borderRadius: `${theme?.customization?.borderRadius}px`
+            padding: '0 30px'
         },
         menuCaption: {
             fontSize: '0.875rem',

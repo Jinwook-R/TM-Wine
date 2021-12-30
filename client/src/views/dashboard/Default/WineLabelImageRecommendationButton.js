@@ -8,15 +8,16 @@ import { Avatar, Button, Box, Grid, Menu, MenuItem, Typography } from '@mui/mate
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 const CardWrapper = styled(MainCard)(({ theme }) => ({
+    maxWidth: '500px',
+    margin: '0 auto',
     cursor: 'pointer',
-    backgroundColor: '#845EC2',
+    backgroundColor: '#B39CD0',
     color: '#fff',
     position: 'relative',
-    height: '100%',
-    borderRadius: 0
+    borderRadius: 10
 }));
 
-const WineLabelSearch = ({ isLoading }) => {
+const WineLabelImageRecommendationButton = ({ isLoading }) => {
     const theme = useTheme();
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -32,28 +33,22 @@ const WineLabelSearch = ({ isLoading }) => {
     return (
         <>
             <CardWrapper border={false} content={false} onClick={onCardClick}>
-                <Box sx={{ p: 2.25 }}>
-                    <Grid container direction="column">
-                        <Grid item>
-                            <Typography
-                                sx={{
-                                    fontSize: '2.125rem',
-                                    textAlign: 'center',
-                                    lineHeight: '95px'
-                                }}
-                            >
-                                라벨 기반 와인 추천
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                </Box>
+                <Typography
+                    sx={{
+                        fontSize: '2.125rem',
+                        textAlign: 'center',
+                        lineHeight: '95px'
+                    }}
+                >
+                    라벨 이미지 와인 추천
+                </Typography>
             </CardWrapper>
         </>
     );
 };
 
-WineLabelSearch.propTypes = {
+WineLabelImageRecommendationButton.propTypes = {
     isLoading: PropTypes.bool
 };
 
-export default WineLabelSearch;
+export default WineLabelImageRecommendationButton;

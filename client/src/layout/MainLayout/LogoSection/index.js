@@ -11,11 +11,7 @@ import { lineHeight } from '@mui/system';
 // ==============================|| LOGO SVG ||============================== //
 
 const styledName = makeStyles({
-    root: {
-        position: 'absolute',
-        fontSize: 20,
-        lineHeight: 4
-    }
+    root: {}
 });
 
 const LogoSection = () => {

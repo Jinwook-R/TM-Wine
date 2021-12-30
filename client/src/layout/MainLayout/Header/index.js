@@ -28,11 +28,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                         width: 'auto'
                     }
                 }}
-            >
-                <Box component="span" sx={{ display: { xs: 'block', md: 'block' }, flexGrow: 1 }}>
-                    <LogoSection />
-                </Box>
-            </Box>
+            ></Box>
         </>
     );
 };

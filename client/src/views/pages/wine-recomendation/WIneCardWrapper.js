@@ -12,7 +12,6 @@ import { borderRadius } from '@mui/system';
 const WIneCardWrapper = ({ children, ...other }) => (
     <MainCard
         sx={{
-            // backgroundColor: '#E0F4FD',
             maxWidth: { xs: 600 },
             maxHeight: { sm: 1200, xs: 1500 },
             '& > *': {
