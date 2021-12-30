@@ -1,14 +1,14 @@
 
 
-# TM-wine
+# TM-Wine
 
-AI 기반 와인 추천 시스템
+### AI 기반 와인 추천 시스템
 
 <br>
 
 ## Development framework 
 
-- Front-End : react
+- Front-End : React, Redux, Redux-Saga ,Axios, ES6, Material-UI
 - Back-End : django 4.0
 - AI
   - label detection : Yolov5
