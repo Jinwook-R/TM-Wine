@@ -11,50 +11,18 @@ import SkeletonTotalOrderCard from 'ui-component/cards/Skeleton/EarningCard';
 
 const CardWrapper = styled(MainCard)(({ theme }) => ({
     cursor: 'pointer',
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: '#845EC2',
     color: '#fff',
     overflow: 'hidden',
     position: 'relative',
+    borderRadius: 0,
     '&>div': {
         position: 'relative',
         zIndex: 5
-    },
-    '&:after': {
-        content: '""',
-        position: 'absolute',
-        width: 210,
-        height: 210,
-        background: theme.palette.primary[800],
-        borderRadius: '50%',
-        zIndex: 1,
-        top: -85,
-        right: -95,
-        [theme.breakpoints.down('sm')]: {
-            top: -105,
-            right: -140
-        }
-    },
-    '&:before': {
-        content: '""',
-        position: 'absolute',
-        zIndex: 1,
-        width: 210,
-        height: 210,
-        background: theme.palette.primary[800],
-        borderRadius: '50%',
-        top: -125,
-        right: -15,
-        opacity: 0.5,
-        [theme.breakpoints.down('sm')]: {
-            top: -155,
-            right: -70
-        }
     }
 }));
 
 const WineRecommendation = ({ isLoading }) => {
-    const theme = useTheme();
-
     const [timeValue, setTimeValue] = useState(false);
     const handleChangeTime = (event, newValue) => {
         setTimeValue(newValue);
@@ -62,29 +30,23 @@ const WineRecommendation = ({ isLoading }) => {
 
     return (
         <>
-            {isLoading ? (
-                <SkeletonTotalOrderCard />
-            ) : (
-                <CardWrapper border={false} content={false}>
-                    <Box sx={{ p: 2.25 }}>
-                        <Grid container direction="column">
-                            <Grid item sx={{ mb: 0.75 }}>
-                                <Typography
-                                    sx={{
-                                        fontWeight: 'bold',
-                                        fontSize: '2.125rem',
-                                        fontWeight: 500,
-                                        textAlign: 'center',
-                                        lineHeight: '95px'
-                                    }}
-                                >
-                                    와인 추천
-                                </Typography>
-                            </Grid>
+            <CardWrapper border={false} content={false}>
+                <Box sx={{ p: 2.25 }}>
+                    <Grid container direction="column">
+                        <Grid item sx={{ mb: 0.75 }}>
+                            <Typography
+                                sx={{
+                                    fontSize: '2.125rem',
+                                    textAlign: 'center',
+                                    lineHeight: '95px'
+                                }}
+                            >
+                                키워드 기반 와인 추천
+                            </Typography>
                         </Grid>
-                    </Box>
-                </CardWrapper>
-            )}
+                    </Grid>
+                </Box>
+            </CardWrapper>
         </>
     );
 };

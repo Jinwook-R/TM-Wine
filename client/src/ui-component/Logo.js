@@ -21,12 +21,7 @@ const styledLogo = makeStyles({
 
 const Logo = () => {
     const classes = styledLogo();
-
-    return (
-        <div className={classes.root}>
-            <img src={process.env.PUBLIC_URL + '/main-font.png'} alt=""></img>
-        </div>
-    );
+    return <div className={classes.root}></div>;
 };
 
 export default Logo;
