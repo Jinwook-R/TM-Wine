@@ -11,7 +11,6 @@ import { SET_MENU } from 'store/actions';
 
 // styles
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
-    ...theme.typography.mainContent,
     ...(!open && {
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0
@@ -29,7 +28,7 @@ const MainLayout = () => {
     }, [matchDownMd]);
 
     return (
-        <Box>
+        <Box sx={{ paddingBottom: 10, backgroundColor: '#FCF7FF' }}>
             <Box
                 clssName="cover"
                 sx={{
@@ -45,7 +44,7 @@ const MainLayout = () => {
                         right: 0,
                         top: 0,
                         bottom: 0,
-                        background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%,#fff 90%)'
+                        background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, #FCF7FF 90%)'
                     }
                 }}
             >
@@ -60,7 +59,7 @@ const MainLayout = () => {
                         letterSpacing: '0.4em',
                         textIndent: '0.4em',
                         whiteSpace: 'nowrap',
-                        color: '#B39CD0'
+                        color: '#8083FF'
                     }}
                 >
                     TM-WINE

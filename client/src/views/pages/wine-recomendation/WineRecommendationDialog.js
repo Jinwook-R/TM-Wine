@@ -29,9 +29,6 @@ export default function WineRecommendationDialog() {
         if (e.target !== e.currentTarget) return;
         console.log(e.target);
     };
-
-    console.log('WineRecommendationDialog', wineList);
-
     return (
         <>
             <Dialog fullScreen open={loadWineInfoDone} onClose={handleClose} TransitionComponent={Transition}>

@@ -24,7 +24,6 @@ export const LoadWineInfoDoneChange = () => {
 
 export default (state = initialState, action) => {
     const { type, payload, error } = action;
-    console.log('reducer payload: ', payload);
     switch (type) {
         case WINE_INFO_BY_IMAGE_REQUEST:
             return {
@@ -36,7 +35,7 @@ export default (state = initialState, action) => {
                 ...state,
                 loadWineInfoLoading: false,
                 loadWineInfoDone: true,
-                wineList: payload
+                wineList: payload ?? []
             };
         case LOAD_WINE_INFO_DONE_CHANGE:
             return {

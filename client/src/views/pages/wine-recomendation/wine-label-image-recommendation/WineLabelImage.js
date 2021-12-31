@@ -17,8 +17,7 @@ const styledImage = makeStyles({
         position: 'relative',
         display: 'block',
         height: '550px',
-        borderWidth: '1px',
-        border: '1px #B39CD0 solid',
+        border: '1px #fff solid',
         '& img': {
             position: 'absolute',
             width: '100%',

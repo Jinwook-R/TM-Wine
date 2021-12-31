@@ -9,8 +9,8 @@ function wineInfoByImageRequestAPI(data) {
 
 function* wineInfoByImage(data) {
     try {
+        data = data.payload.wineImage;
         const wineList = yield call(wineInfoByImageRequestAPI, data);
-        console.log('saga:', wineList);
         yield put({
             type: WINE_INFO_BY_IMAGE_SUCCESS,
             payload: wineList

@@ -39,7 +39,7 @@ const WineKeywordRecommendationButton = ({ isLoading }) => {
                                     lineHeight: '95px'
                                 }}
                             >
-                                키워드 와인 추천
+                                키워드 기반 와인 추천
                             </Typography>
                         </Grid>
                     </Grid>

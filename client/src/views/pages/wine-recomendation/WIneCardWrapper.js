@@ -13,7 +13,6 @@ const WIneCardWrapper = ({ children, ...other }) => (
     <MainCard
         sx={{
             maxWidth: { xs: 600 },
-            maxHeight: { sm: 1200, xs: 1500 },
             '& > *': {
                 flexGrow: 1,
                 flexBasis: '50%'

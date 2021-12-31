@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
-import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, Grid } from '@mui/material';
+import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, Grid, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 // project imports
@@ -66,9 +66,11 @@ const WineKeyword = () => {
                 <Grid item xs={12}>
                     <div className="custom__img">
                         <FormGroup>
-                            <FormControlLabel control={<Checkbox defaultChecked />} label="단맛이 좋아요" />
-                            <FormControlLabel control={<Checkbox />} label="탄산이 좋아요" />
-                            <FormControlLabel control={<Checkbox />} label="쓴맛이 좋아요" />
+                            <FormControlLabel control={<Checkbox />} label={<Typography variant={'h3'}>단맛이 좋아요</Typography>} />
+                            <FormControlLabel control={<Checkbox />} label={<Typography variant={'h3'}>신맛이 좋아요</Typography>} />
+                            <FormControlLabel control={<Checkbox />} label={<Typography variant={'h3'}>탄산이 좋아요</Typography>} />
+                            <FormControlLabel control={<Checkbox />} label={<Typography variant={'h3'}>떫은 맛이 좋아요</Typography>} />
+                            <FormControlLabel control={<Checkbox />} label={<Typography variant={'h3'}>부드러운 맛이 좋아요</Typography>} />
                         </FormGroup>
                     </div>
                 </Grid>
