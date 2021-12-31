@@ -16,6 +16,9 @@
 
 <br>
 
+## Execution
+ - Front-End : npm init -> npm install -> npm start
+
 ## Workflow
 
 #### 1. 라벨 기반 추천 기능
