@@ -1,0 +1,19 @@
+# for Mac
+
+*.DS_store
+
+# server
+/Server/tmwine/.idea
+.idea/
+
+/Server/tmwine/db.sqlite3
+
+# Ignore settings
+/Server/tmwine/mysql.cnf
+
+# Ignore migrations
+/Server/tmwine/api/migrations
+
+# Ignore pycache
+**/__pycache__
+/Server/tmwine/tmwine/__pycache__
