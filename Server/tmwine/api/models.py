@@ -18,12 +18,27 @@ class Wine(models.Model):
         db_table = 'Wine'
 
     def __str__(self):
-        return self.품명영
+        return self.품명영문
+
+class HotelWine(models.Model):
+    보유와인번호 = models.AutoField(primary_key = True)
+    와인번호 = models.ForeignKey(
+        Wine,
+        on_delete=models.CASCADE
+    )
+    군집 = models.IntegerField(default=0)
+    평점 = models.DecimalField(max_digits=6, decimal_places=3)
+
+    class Meta:
+        db_table = 'HotelWine'
+
+    def __str__(self):
+        return self.보유와인번호
 
 class Review(models.Model):
     리뷰번호 = models.AutoField(primary_key = True)
     와인번호 = models.ForeignKey(
-        Wine,
+        HotelWine,
         on_delete=models.CASCADE
     )
     키워드1 = models.IntegerField(default=0)
@@ -31,5 +46,9 @@ class Review(models.Model):
     키워드3 = models.IntegerField(default=0)
     키워드4 = models.IntegerField(default=0)
     키워드5 = models.IntegerField(default=0)
+
     class Meta:
         db_table = 'Review'
+
+    def __str__(self):
+        return self.와인번호

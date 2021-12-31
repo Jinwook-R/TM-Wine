@@ -17,3 +17,6 @@
 # Ignore pycache
 **/__pycache__
 /Server/tmwine/tmwine/__pycache__
+
+# Ignore image folder
+/Server/tmwine/label_img
