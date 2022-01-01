@@ -16,8 +16,39 @@
 
 <br>
 
+## Installations
+
+- Front-End:  
+- Back-End :  
+    - Django setup  
+    $ pip install django  
+    $ pip install djangorestframework
+    $ pip install pillow  
+    - Database setup
+        - Create your database  
+        $ create database 'db_name'  
+        - Create 'mysql.cnf' file in 'Server/tmwine/mysql.cnf'    
+        ```
+        [client]  
+        database = 'db_name'  
+        host = localhost  
+        user = root  
+        password = 'mypassword'  
+        ```
+        - Adjust models to your database  
+        $ python manage.py migrate  
+        $ python manage.py makemigrations api  
+        $ python manage.py migrate  
+
+<br>
+
 ## Execution
- - Front-End : npm init -> npm install -> npm start
+ - Front-End : npm init -> npm install -> npm start  
+ - Back-End :  
+    $ mysql.server start  
+    $ python manage.py runserver  
+
+<br>
 
 ## Workflow
 
