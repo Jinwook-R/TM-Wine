@@ -28,9 +28,10 @@ function* wineInfoByKeyword(data) {
     try {
         data = data.payload;
         const wineList = yield call(wineInfoByKeywordRequestAPI, data);
+        console.log(wineList);
         yield put({
             type: actions.WINE_INFO_BY_KEYWORD_SUCCESS,
-            payload: wineList
+            payload: wineList.data
         });
     } catch (e) {
         console.log(e);

@@ -13,7 +13,6 @@ const configureStore = () => {
             : composeWithDevTools(applyMiddleware(...middlewares));
     const store = createStore(reducer, enhancer);
     sagaMiddleware.run(rootSaga);
-
     return store;
 };
 export default configureStore;

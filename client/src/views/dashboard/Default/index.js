@@ -57,7 +57,7 @@ const Dashboard = () => {
                             <h3 style={{ color: '#7485B5', textAlign: 'center', fontSize: 30 }}>오늘의 추천 와인</h3>
                         </p>
                         <div className={classes.root} id="img__box">
-                            <img src={process.env.PUBLIC_URL + `/wines/1.MollydookerCarnivalofLove.PNG`} alt="" />
+                            <img src={process.env.PUBLIC_URL + `/wines/1. MollydookerCarnivalofLove.PNG`} alt="" />
                         </div>
                     </div>
                 </Grid>
