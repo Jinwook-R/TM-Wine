@@ -20,11 +20,9 @@ export async function wineInfoByImageRequest(data) {
         .catch((error) => {
             console.log(error);
         });
-    console.log(result);
-    return result;
+    return result.data;
 }
 
-export async function wineInfoByKeywordRequest(data) {
-    console.log(data);
-    // return axios.post(`${API_BASE_URL}/api/v1/keyword/`, data);
+export function wineInfoByKeywordRequest(data) {
+    return axios.post(`${API_BASE_URL}/api/v1/keyword/`, data);
 }

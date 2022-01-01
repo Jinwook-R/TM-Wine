@@ -2,12 +2,7 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Avatar, Box, ButtonBase } from '@mui/material';
-
-// assets
-import { IconMenu2 } from '@tabler/icons';
-
-// ==============================|| MAIN NAVBAR / HEADER ||============================== //
+import { Box } from '@mui/material';
 
 const Header = ({ handleLeftDrawerToggle }) => {
     const theme = useTheme();
