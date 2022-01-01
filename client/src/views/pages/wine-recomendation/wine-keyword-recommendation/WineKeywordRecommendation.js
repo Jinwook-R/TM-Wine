@@ -5,7 +5,7 @@ import { Grid, Typography } from '@mui/material';
 import WineWrapper from '../WineWrapper';
 import WIneCardWrapper from '../WIneCardWrapper';
 import WineKeyword from './WineKeyword';
-// ================================|| WineLabelImageRecommendation ||================================ //
+// ================================|| WineKeywordRecommendation ||================================ //
 const WineKeywordRecommendation = () => {
     return (
         <WineWrapper>

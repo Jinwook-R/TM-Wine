@@ -1,0 +1,1 @@
+export const GET_KEYWORD_LIST = 'GET_KEYWORD_LIST';

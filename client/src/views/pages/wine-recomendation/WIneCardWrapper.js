@@ -12,7 +12,7 @@ import { borderRadius } from '@mui/system';
 const WIneCardWrapper = ({ children, ...other }) => (
     <MainCard
         sx={{
-            maxWidth: { xs: 600 },
+            minWidth: { xs: 1000 },
             '& > *': {
                 flexGrow: 1,
                 flexBasis: '50%'

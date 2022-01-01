@@ -91,7 +91,7 @@ const WineLabelImage = () => {
                             </p>
                         </div>
                     </div>
-                    <form className="upload__input" style={{ display: 'block' }}>
+                    <form className="upload__input" style={{ width: 350, margin: '0 auto', display: 'block' }}>
                         <label className={inputClasses.root} for="inputImage">
                             파일 업로드
                             <input type="file" id="inputImage" accept="img/*" onChange={onLoadFile} style={{ display: 'none' }} />
@@ -108,18 +108,16 @@ const WineLabelImage = () => {
                         <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
                     </Box>
                     <form noValidate onSubmit={handleSubmit}>
-                        <Box sx={{ mt: 2 }}>
-                            <AnimateButton>
-                                <Button
-                                    disableElevation
-                                    fullWidth
-                                    type="submit"
-                                    variant="contained"
-                                    style={{ padding: '12px 0', borderRadius: 5, backgroundColor: '#B0A8B9' }}
-                                >
-                                    <span style={{ fontSize: 18 }}>추천받기</span>
-                                </Button>
-                            </AnimateButton>
+                        <Box sx={{ textAlign: 'center' }}>
+                            <Button
+                                disableElevation
+                                fullWidth
+                                type="submit"
+                                variant="contained"
+                                style={{ width: 350, padding: '12px 0', borderRadius: 5, backgroundColor: '#B0A8B9' }}
+                            >
+                                <span style={{ fontSize: 18 }}>추천받기</span>
+                            </Button>
                         </Box>
                     </form>
                 </Grid>
