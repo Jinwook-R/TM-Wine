@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 import wine from './wine';
+import keyword from './keyword';
 
 const rootReducer = (state, action) => {
     switch (action.type) {
         default: {
             const combineReducer = combineReducers({
-                wine
+                wine,
+                keyword
             });
             return combineReducer(state, action);
         }

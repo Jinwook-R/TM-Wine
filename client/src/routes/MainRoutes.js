@@ -7,7 +7,7 @@ import Loadable from 'ui-component/Loadable';
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
-// utilities routing
+// WineRecommendation routing
 const WineLabelImageRecommendation = Loadable(
     lazy(() => import('views/pages/wine-recomendation/wine-label-image-recommendation/WineLabelImageRecommendation'))
 );
@@ -15,12 +15,6 @@ const WineLabelImageRecommendation = Loadable(
 const WineKeywordRecommendation = Loadable(
     lazy(() => import('views/pages/wine-recomendation/wine-keyword-recommendation/WineKeywordRecommendation'))
 );
-
-const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')));
-const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
-const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
-const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
-const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 const MainRoutes = {
@@ -32,36 +26,12 @@ const MainRoutes = {
             element: <DashboardDefault />
         },
         {
-            path: '/dashboard/default',
-            element: <DashboardDefault />
-        },
-        {
             path: '/wineLabel',
             element: <WineLabelImageRecommendation />
         },
         {
             path: '/wineKeyword',
             element: <WineKeywordRecommendation />
-        },
-        {
-            path: '/utils/util-typography',
-            element: <UtilsTypography />
-        },
-        {
-            path: '/utils/util-color',
-            element: <UtilsColor />
-        },
-        {
-            path: '/utils/util-shadow',
-            element: <UtilsShadow />
-        },
-        {
-            path: '/icons/tabler-icons',
-            element: <UtilsTablerIcons />
-        },
-        {
-            path: '/icons/material-icons',
-            element: <UtilsMaterialIcons />
         }
     ]
 };

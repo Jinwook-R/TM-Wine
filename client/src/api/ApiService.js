@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_BASE_URL = 'http://localhost:8080';
+import { API_BASE_URL } from './config';
 
 const toBase64 = (file) =>
     new Promise((resolve, reject) => {
@@ -13,8 +13,7 @@ const toBase64 = (file) =>
 export async function wineInfoByImageRequest(data) {
     const result = await toBase64(data)
         .then((e) => {
-            console.log(e);
-            return axios.get(`${API_BASE_URL}/api/v1/label`, {
+            return axios.post(`${API_BASE_URL}/api/v1/label/`, {
                 image: e
             });
         })
@@ -23,4 +22,9 @@ export async function wineInfoByImageRequest(data) {
         });
     console.log(result);
     return result;
+}
+
+export async function wineInfoByKeywordRequest(data) {
+    console.log(data);
+    // return axios.post(`${API_BASE_URL}/api/v1/keyword/`, data);
 }

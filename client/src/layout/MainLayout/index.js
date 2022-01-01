@@ -1,13 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 // material-ui
 import { styled, useTheme } from '@mui/material/styles';
-import { AppBar, Box, CssBaseline, Toolbar, Typography, useMediaQuery } from '@mui/material';
-// project imports
-import Header from './Header';
-import { SET_MENU } from 'store/actions';
+import { Box, Toolbar, Typography, useMediaQuery } from '@mui/material';
 
 // styles
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
@@ -20,12 +17,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
 // ==============================|| MAIN LAYOUT ||============================== //
 const MainLayout = () => {
     const theme = useTheme();
-    const matchDownMd = useMediaQuery(theme.breakpoints.down('lg'));
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch({ type: SET_MENU, opened: !matchDownMd });
-    }, [matchDownMd]);
 
     return (
         <Box sx={{ paddingBottom: 10, backgroundColor: '#FCF7FF' }}>
@@ -62,14 +53,12 @@ const MainLayout = () => {
                         color: '#8083FF'
                     }}
                 >
-                    TM-WINE
+                    <Link to={'/free'} style={{ textDecoration: 'none' }}>
+                        TM-WINE
+                    </Link>
                 </Typography>
-                {/*<Header />*/}
             </Box>
-            {/* <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} /> */}
-            {/* main content */}
             <Main theme={theme}>
-                {/* <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign /> */}
                 <Outlet />
             </Main>
         </Box>

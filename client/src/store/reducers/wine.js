@@ -1,4 +1,11 @@
-import { WINE_INFO_BY_IMAGE_REQUEST, WINE_INFO_BY_IMAGE_SUCCESS, LOAD_WINE_INFO_DONE_CHANGE } from '../actions/wine.js';
+import {
+    WINE_INFO_BY_IMAGE_REQUEST,
+    WINE_INFO_BY_IMAGE_SUCCESS,
+    LOAD_WINE_INFO_DONE_CHANGE,
+    WINE_INFO_BY_KEYWORD_REQUEST,
+    WINE_INFO_BY_KEYWORD_FAILURE,
+    WINE_INFO_BY_KEYWORD_SUCCESS
+} from '../actions/wine.js';
 
 export const initialState = {
     loadWineInfoLoading: false,
@@ -12,6 +19,15 @@ export const wineInfoByImageAction = (data) => {
         type: WINE_INFO_BY_IMAGE_REQUEST,
         payload: {
             wineImage: data
+        }
+    };
+};
+
+export const wineInfoByKeywordAction = (data) => {
+    return {
+        type: WINE_INFO_BY_KEYWORD_REQUEST,
+        payload: {
+            keyword: data
         }
     };
 };
@@ -31,6 +47,25 @@ export default (state = initialState, action) => {
                 loadWineInfoLoading: true
             };
         case WINE_INFO_BY_IMAGE_SUCCESS:
+            return {
+                ...state,
+                loadWineInfoLoading: false,
+                loadWineInfoDone: true,
+                wineList: payload ?? []
+            };
+        case WINE_INFO_BY_KEYWORD_FAILURE:
+            return {
+                ...state,
+                loadWineInfoLoading: false,
+                loadWineInfoDone: false,
+                loadWineInfoError: false
+            };
+        case WINE_INFO_BY_KEYWORD_REQUEST:
+            return {
+                ...state,
+                loadWineInfoLoading: true
+            };
+        case WINE_INFO_BY_KEYWORD_SUCCESS:
             return {
                 ...state,
                 loadWineInfoLoading: false,
