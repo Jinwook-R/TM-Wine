@@ -18,66 +18,24 @@ def labelRecommendation(request):
     requestBody = QueryDict.dict(request.data)              # 요청 바디 불러오기 (django 내의 QueryDict type)
     with open('img.png', "wb") as f:                        # TODO : 이미지 파일명 수정해서 다른 경로에 저장
         f.write(base64.b64decode(requestBody['image']))
-
-    responseBody = {
-    "result1" : {
-            "name" : "wine1, Pinor Noir",
-            "price" : 310000,
-            "category" : "Red",
-            "origin" : "Spain",
-            "varieties" : "Mencia (100%)",
-            "alcoholicity" : "15.3",
-            "sweetness" : 1,
-            "acidity" : 0,
-            "body" : 4,
-            "tannin" : 0,
-           },
-            "result2":
-              {"name" : "wine2",
-               "price" : 270000,
-               "category" : "Red",
-               "origin" : "France",
-               "varieties" : "Garnaca (85%), Carinena (10%)",
-               "alcoholicity" : "15.3",
-              "sweetness" : 2,
-              "acidity" : 1,
-              "body" : 5,
-              "tannin" : 1
-            }
-       }
+    '''
+    responseBody = {"result1" :
+                   {
+                       "와인이름" : "어떤와인",
+                       "품종" : "품종1 (60%), 품종2 (40%)"
+                       ...
+                   }}
 
     return JsonResponse(responseBody, status = 200)
+    '''
+    return HttpResponse("Success")
 
 @api_view(['POST'])
 def keywordRecommendation(request):
-    responseBody = {
-    "result1" : {
-            "name" : "wine1, Pinor Noir",
-            "price" : 310000,
-            "category" : "Red",
-            "origin" : "Spain",
-            "varieties" : "Mencia (100%)",
-            "alcoholicity" : "15.3",
-            "sweetness" : 1,
-            "acidity" : 0,
-            "body" : 4,
-            "tannin" : 0,
-           },
-            "result2":
-              {"name" : "wine2",
-               "price" : 270000,
-               "category" : "Red",
-               "origin" : "France",
-               "varieties" : "Garnaca (85%), Carinena (10%)",
-               "alcoholicity" : "15.3",
-              "sweetness" : 2,
-              "acidity" : 1,
-              "body" : 5,
-              "tannin" : 1
-            }
-       }
-
-    return JsonResponse(responseBody, status = 200)
+    '''
+    keyword logic
+    '''
+    return HttpResponse("Success")
 
 @api_view(['GET'])
 def dailyRecommendation(request):
