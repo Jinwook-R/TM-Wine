@@ -8,6 +8,10 @@ from django.db import connection
 from django.http import HttpResponse, JsonResponse, QueryDict
 from rest_framework import status
 from rest_framework.decorators import api_view
+import pymysql
+
+from api.AI_label import Labeldetection
+from api.AI_recomd import recommend_based_label
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,17 +23,103 @@ def labelRecommendation(request):
     requestBody = QueryDict.dict(request.data)              # 요청 바디 불러오기 (django 내의 QueryDict type)
     with open('img.png', "wb") as f:                        # TODO : 이미지 파일명 수정해서 다른 경로에 저장
         f.write(base64.b64decode(requestBody['image']))
-    '''
-    responseBody = {"result1" :
-                   {
-                       "와인이름" : "어떤와인",
-                       "품종" : "품종1 (60%), 품종2 (40%)"
-                       ...
-                   }}
 
-    return JsonResponse(responseBody, status = 200)
-    '''
-    return HttpResponse("Success")
+    PATH = os.getcwd()
+    label_name = Labeldetection.LabelDetector(PATH + "/img.png")
+
+    #if(label_name=='None') :
+    #    return HttpResponse("Nothing detected")
+
+    conn = pymysql.connect(host="localhost", user="mina", password="1234", db="FINAL_test_DB")
+    db_conn = conn.cursor()
+    wine_info=[]
+
+    ## find wine info
+    sql_cmd = 'SELECT 품종 FROM Wine where 품명영문 = %s'
+    db_conn.execute(sql_cmd, (label_name))
+    wine_info.append(db_conn.fetchall()[0][0])
+
+    sql_cmd = 'SELECT 당도 FROM Wine where 품명영문 = %s'
+    db_conn.execute(sql_cmd, (label_name))
+    wine_info.append(db_conn.fetchall()[0][0])
+
+    sql_cmd = 'SELECT 산도 FROM Wine where 품명영문 = %s'
+    db_conn.execute(sql_cmd, (label_name))
+    wine_info.append(db_conn.fetchall()[0][0])
+
+    sql_cmd = 'SELECT 바디 FROM Wine where 품명영문 = %s'
+    db_conn.execute(sql_cmd, (label_name))
+    wine_info.append(db_conn.fetchall()[0][0])
+
+    sql_cmd = 'SELECT 타닌 FROM Wine where 품명영문 = %s'
+    db_conn.execute(sql_cmd, (label_name))
+    wine_info.append(db_conn.fetchall()[0][0])
+
+    clustered_num = recommend_based_label.Wine_recomender(wine_info)
+
+
+
+    ## find similar wine's PK
+    sql_cmd = 'SELECT 와인번호 FROM HotelWine where 군집 = %s ORDER BY 평점 DESC LIMIT 2'
+    db_conn.execute(sql_cmd, (clustered_num))
+    ret = db_conn.fetchall()
+
+    ## find similar wine's info
+    responseBody={}
+
+    # for dic
+    db_conn = conn.cursor(pymysql.cursors.DictCursor)
+
+    sql_cmd = 'SELECT * FROM Wine where 와인번호 = %s'
+    db_conn.execute(sql_cmd, (int(ret[0][0])))
+    test = db_conn.fetchall()
+    tmp = test[0]
+
+    response1 = {}
+    response1['id'] = tmp['와인번호']
+    response1['name'] = tmp['품명영문'].replace(";", ",") + " (" + \
+                        tmp['품명국문'].replace(";", ",") + ")"
+    response1['price'] = tmp['가격']
+    response1['category'] = tmp['카테고리']
+    response1['origin'] = tmp['생산지']
+    response1['varieties'] = tmp['품종'].replace(";", ",")
+    response1['alcoholicity'] = tmp['알콜도수']
+    response1['sweetness'] = tmp['당도']
+    response1['acidity'] = tmp['산도']
+    response1['body'] = tmp['바디']
+    response1['tannin'] = tmp['타닌']
+    responseBody['result1'] = response1
+
+
+
+    db_conn.execute(sql_cmd, (int(ret[1][0])))
+    test = db_conn.fetchall()
+    tmp = test[0]
+
+
+    response2 = {}
+    response2['id'] = tmp['와인번호']
+    response2['name'] = tmp['품명영문'].replace(";", ",") + " (" + \
+                        tmp['품명국문'].replace(";", ",") + ")"
+    response2['price'] = tmp['가격']
+    response2['category'] = tmp['카테고리']
+    response2['origin'] = tmp['생산지']
+    response2['varieties'] = tmp['품종'].replace(";", ",")
+    response2['alcoholicity'] = tmp['알콜도수']
+    response2['sweetness'] = tmp['당도']
+    response2['acidity'] = tmp['산도']
+    response2['body'] = tmp['바디']
+    response2['tannin'] = tmp['타닌']
+    responseBody['result2'] = response2
+
+
+
+
+    return JsonResponse(responseBody, status=200)
+
+
+
+
 
 @api_view(['POST'])
 def keywordRecommendation(request):
