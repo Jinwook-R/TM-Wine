@@ -9,8 +9,6 @@ import Routes from 'routes';
 // defaultTheme
 import themes from 'themes';
 
-// project imports
-
 // ==============================|| APP ||============================== //
 
 const App = () => {

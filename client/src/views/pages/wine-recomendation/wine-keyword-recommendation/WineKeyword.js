@@ -18,12 +18,12 @@ import {
 
 import { wineInfoByKeywordAction } from '../../../../store/reducers/wine';
 import WineRecommendationDialog from '../WineRecommendationDialog';
+import AnimateButton from '../../../../ui-component/extended/AnimateButton';
 
 // ============================|| WineKeyword ||============================ //
 const WineKeyword = () => {
     const dispatch = useDispatch();
     const keywordList = useSelector((state) => state.keyword);
-
     const [keyword, setKeyword] = useState(0);
 
     const [checkboxEnable, setCheckboxEnable] = useState({
@@ -35,6 +35,10 @@ const WineKeyword = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (checkboxEnable.id === -1) {
+            alert('키워드를 선택하세요!');
+            return false;
+        }
         const keyword = checkboxEnable.id + 1;
         dispatch(wineInfoByKeywordAction(keyword));
     };
@@ -58,8 +62,8 @@ const WineKeyword = () => {
             ? setCheckboxEnable({
                   ...checkboxEnable,
                   disable: false,
-                  idx: e.target.name,
-                  id: Number(e.target.id)
+                  idx: -1,
+                  id: -1
               })
             : setCheckboxEnable({
                   ...checkboxEnable,
@@ -144,15 +148,17 @@ const WineKeyword = () => {
                     </Box>
                     <form noValidate>
                         <Box sx={{ textAlign: 'center', marginTop: 2 }}>
-                            <Button
-                                disableElevation
-                                type="button"
-                                variant="contained"
-                                style={{ width: 300, padding: '12px 0', borderRadius: 5, backgroundColor: '#B0A8B9' }}
-                                onClick={handleSubmit}
-                            >
-                                <span style={{ fontSize: 18 }}>추천받기</span>
-                            </Button>
+                            <AnimateButton>
+                                <Button
+                                    disableElevation
+                                    type="button"
+                                    variant="contained"
+                                    style={{ width: 300, padding: '12px 0', borderRadius: 5, backgroundColor: '#B0A8B9' }}
+                                    onClick={handleSubmit}
+                                >
+                                    <span style={{ fontSize: 18 }}>추천받기</span>
+                                </Button>
+                            </AnimateButton>
                         </Box>
                     </form>
                 </Grid>

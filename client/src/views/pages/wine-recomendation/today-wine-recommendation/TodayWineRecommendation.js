@@ -46,7 +46,7 @@ export default function TodayWineRecommendation() {
     return (
         <>
             <Grid item xs={12}>
-                <div className="custom__img">
+                <div className="custom__img" s>
                     <p>
                         <h3 style={{ color: '#7485B5', textAlign: 'center', fontSize: 30 }}>오늘의 추천 와인</h3>
                     </p>

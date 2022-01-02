@@ -4,7 +4,6 @@ import { createTheme } from '@mui/material/styles';
 import colors from 'assets/scss/_themes-vars.module.scss';
 
 // project imports
-import componentStyleOverrides from './compStyleOverride';
 import themePalette from './palette';
 import themeTypography from './typography';
 
@@ -47,7 +46,6 @@ export const theme = (customization) => {
     };
 
     const themes = createTheme(themeOptions);
-    themes.components = componentStyleOverrides(themeOption);
 
     return themes;
 };
