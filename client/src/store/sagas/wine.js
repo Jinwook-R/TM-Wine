@@ -17,6 +17,7 @@ function wineInfoByKeywordRequestAPI(data) {
 function* everyWineInfo() {
     try {
         const everyWineList = yield call(everyWineInfoRequestAPI);
+        console.log('everyWineList:', everyWineList);
         yield put({
             type: actions.EVERY_WINE_INFO_SUCCESS,
             payload: everyWineList.data

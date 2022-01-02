@@ -18,6 +18,7 @@ const styledImage = makeStyles({
         display: 'block',
         height: '50vh',
         border: '1px #fff solid',
+        fontSize: 30,
         '& img': {
             position: 'absolute',
             width: '100%',
@@ -33,8 +34,8 @@ const styledImage = makeStyles({
 
 const styledInput = makeStyles({
     root: {
-        fontSize: 18,
-        padding: '18px 0',
+        fontSize: 30,
+        padding: '31px 0',
         display: 'block',
         width: '100%',
         marginTop: '8px',
@@ -121,7 +122,7 @@ const WineLabelImage = () => {
                                     variant="contained"
                                     style={{ width: 350, padding: '12px 0', borderRadius: 5, backgroundColor: '#B0A8B9' }}
                                 >
-                                    <span style={{ fontSize: 18 }}>추천받기</span>
+                                    <span style={{ fontSize: 30 }}>추천받기</span>
                                 </Button>
                             </AnimateButton>
                         </Box>

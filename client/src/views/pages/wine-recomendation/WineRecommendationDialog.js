@@ -72,6 +72,44 @@ const style = {
     p: 4
 };
 
+const style2 = {
+    textAlign: 'center',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 800,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4
+};
+
+const styledWordCloud = makeStyles({
+    root: {
+        margin: '0 auto',
+        position: 'relative',
+        display: 'block',
+        height: '400px',
+        borderWidth: '1px',
+        flexGrow: '1',
+        borderRadius: '10px',
+        overflow: 'hidden',
+        cursor: 'pointer'
+    },
+    '& img': {
+        marginLeft: '100px',
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        margin: 'auto'
+    }
+});
+
 const BootstrapDialogTitle = (props) => {
     const { children, onClose, ...other } = props;
 
@@ -102,6 +140,8 @@ export default function WineRecommendationDialog() {
     const wineList = useSelector((state) => state.wine.wineList);
     const [openModal, setOpenModal] = useState(false);
     const [roomNumber, setRoomNumber] = useState('');
+    const [keywordModal, setKeywordModal] = useState(false);
+    const wordCloud = styledWordCloud();
 
     const handleClose = () => {
         dispatch(LoadWineInfoDoneChange());
@@ -114,6 +154,7 @@ export default function WineRecommendationDialog() {
 
     const handleDialogClose = () => {
         setOpenModal(false);
+        setKeywordModal(false);
         setRoomNumber('');
     };
 
@@ -131,6 +172,13 @@ export default function WineRecommendationDialog() {
         setRoomNumber(e.target.value);
     };
 
+    const [keywordCloudWineId, setKeywordCloudWineId] = useState('');
+
+    const handleWordCloudButton = (e) => {
+        setKeywordCloudWineId(e.currentTarget.id);
+        setKeywordModal(true);
+    };
+
     return (
         <div>
             <BootstrapDialog open={loadWineInfoDone} aria-labelledby="customized-dialog-title">
@@ -145,32 +193,61 @@ export default function WineRecommendationDialog() {
                     {wineList.map((e) => (
                         <>
                             <Grid container className="custom__img">
-                                <Grid item xs={7}>
+                                <Grid item xs={5}>
                                     <div className={classes.root} id="img__box">
-                                        <img src={process.env.PUBLIC_URL + `/wines/1. MollydookerCarnivalofLove.PNG`} alt="" />
+                                        <img src={process.env.PUBLIC_URL + `/wines/wine${e.id}-1.png`} alt="" />
                                     </div>
                                 </Grid>
-                                <Grid item xs={5} style={{ marginTop: 20 }}>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 30 }}>{e.name}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 30 }}>가격: {e.price}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 30 }}>원산지: {e.origin}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 30 }}>알콜 도수: {e.alcholicity}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 30 }}>당도: {e.sweetness}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 30 }}>산도: {e.acidity}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 30 }}>바디감: {e.body}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 30 }}>타닌감: {e.tannin}</h2>
-                                    <AnimateButton>
-                                        <Button
-                                            onClick={handleButton}
-                                            disableElevation
-                                            fullWidth
-                                            type="Button"
-                                            variant="contained"
-                                            style={{ width: 350, padding: '12px 0', borderRadius: 5, backgroundColor: '#B0A8B9' }}
-                                        >
-                                            <span style={{ fontSize: 18 }}>주문하기</span>
-                                        </Button>
-                                    </AnimateButton>
+                                <Grid item xs={7} style={{ marginTop: 20, paddingLeft: 10 }}>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>{e.name.split('(')[0]}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>가격: {e.price}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>원산지: {e.origin}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>알콜 도수: {e.alcoholicity}%</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>당도: {e.sweetness}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>산도: {e.acidity}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>바디감: {e.body}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>타닌감: {e.tannin}</h2>
+                                    <Grid container style={{ justifyContent: 'left' }}>
+                                        <AnimateButton>
+                                            <Button
+                                                onClick={handleButton}
+                                                disableElevation
+                                                fullWidth
+                                                type="Button"
+                                                variant="contained"
+                                                style={{
+                                                    display: 'block',
+                                                    width: 350,
+                                                    padding: '12px 0',
+                                                    borderRadius: 5,
+                                                    backgroundColor: '#B0A8B9'
+                                                }}
+                                            >
+                                                <span style={{ fontSize: 30 }}>주문하기</span>
+                                            </Button>
+                                        </AnimateButton>
+                                        <AnimateButton>
+                                            <Button
+                                                className={e.id}
+                                                id={e.id}
+                                                onClick={handleWordCloudButton}
+                                                disableElevation
+                                                fullWidth
+                                                type="Button"
+                                                variant="contained"
+                                                style={{
+                                                    marginLeft: 10,
+                                                    display: 'inline',
+                                                    width: 300,
+                                                    padding: '12px 0',
+                                                    borderRadius: 5,
+                                                    backgroundColor: '#B0A8B9'
+                                                }}
+                                            >
+                                                <span style={{ fontSize: 30 }}>와인 관련 키워드 확인</span>
+                                            </Button>
+                                        </AnimateButton>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                             <Divider sx={{ marginTop: '25px' }} />
@@ -212,6 +289,18 @@ export default function WineRecommendationDialog() {
                     >
                         <span style={{ fontSize: 18 }}>완료</span>
                     </Button>
+                </Box>
+            </Modal>
+            <Modal
+                open={keywordModal}
+                onClose={handleDialogClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style2}>
+                    <div className={wordCloud.root} id="img__box">
+                        <img src={process.env.PUBLIC_URL + `/review_wordcloud/wine${keywordCloudWineId}.png`} alt="" />
+                    </div>
                 </Box>
             </Modal>
         </div>

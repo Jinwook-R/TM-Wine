@@ -19,7 +19,7 @@ export const initialState = {
     loadEveryWineInfoDone: false,
     loadEveryWineInfoError: false,
     wineList: [],
-    everyWineList: []
+    everyWineList: {}
 };
 
 export const everyWineInfoAction = () => {
@@ -54,6 +54,7 @@ export const LoadWineInfoDoneChange = () => {
 
 export default (state = initialState, action) => {
     const { type, payload, error } = action;
+    console.log(payload);
     switch (type) {
         case EVERY_WINE_INFO_REQUEST:
             return {
@@ -65,7 +66,7 @@ export default (state = initialState, action) => {
                 ...state,
                 loadEveryWineInfoLoading: false,
                 loadEveryWineInfoDone: true,
-                everyWineList: Object.values(payload) ?? []
+                everyWineList: payload
             };
         case EVERY_WINE_INFO_FAILURE:
             return {
