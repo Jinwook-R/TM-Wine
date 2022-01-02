@@ -37,7 +37,7 @@ def keywordRecommendation(request):
         return HttpResponse("Bad Request", status=400)
 
     requestBody = QueryDict.dict(request.data)
-    keyword = "키워드" + requestBody['keyword']
+    keyword = "키워드" + str(requestBody['keyword'])
 
     topKeyword = Review.objects.order_by("-" + keyword)
     topKeywordList = []  # list of [wineId, keyword cnt]
