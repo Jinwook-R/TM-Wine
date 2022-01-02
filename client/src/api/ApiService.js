@@ -28,5 +28,6 @@ export async function wineInfoByImageRequest(data) {
 }
 
 export function wineInfoByKeywordRequest(data) {
+    console.log('wineInfoByKeywordRequest', data);
     return axios.post(`${API_BASE_URL}/api/v1/keyword/`, data);
 }

@@ -39,7 +39,7 @@ const WineKeyword = () => {
             alert('키워드를 선택하세요!');
             return false;
         }
-        const keyword = checkboxEnable.id + 1;
+        const keyword = String(checkboxEnable.id + 1);
         dispatch(wineInfoByKeywordAction(keyword));
     };
 
@@ -103,7 +103,7 @@ const WineKeyword = () => {
                                                 onChange={handleCheckBox}
                                             />
                                         }
-                                        label={<Typography variant={'h3'}>{keyword[0]}</Typography>}
+                                        label={<Typography variant={'h2'}>{keyword[0]}</Typography>}
                                     />
                                 ))}
                             {keyword === 1 &&
@@ -117,7 +117,7 @@ const WineKeyword = () => {
                                                 onChange={handleCheckBox}
                                             />
                                         }
-                                        label={<Typography variant={'h3'}>{keyword[0]}</Typography>}
+                                        label={<Typography variant={'h2'}>{keyword[0]}</Typography>}
                                     />
                                 ))}
                             {keyword === 2 &&
@@ -131,7 +131,7 @@ const WineKeyword = () => {
                                                 onChange={handleCheckBox}
                                             />
                                         }
-                                        label={<Typography variant={'h3'}>{keyword[0]}</Typography>}
+                                        label={<Typography variant={'h2'}>{keyword[0]}</Typography>}
                                     />
                                 ))}
                         </FormGroup>
@@ -156,7 +156,7 @@ const WineKeyword = () => {
                                     style={{ width: 300, padding: '12px 0', borderRadius: 5, backgroundColor: '#B0A8B9' }}
                                     onClick={handleSubmit}
                                 >
-                                    <span style={{ fontSize: 18 }}>추천받기</span>
+                                    <span style={{ fontSize: 30 }}>추천받기</span>
                                 </Button>
                             </AnimateButton>
                         </Box>
