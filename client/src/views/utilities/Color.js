@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { Box, Card, Grid, Typography } from '@mui/material';
 
 // project imports
-import SubCard from 'ui-component/cards/SubCard';
-import MainCard from 'ui-component/cards/MainCard';
 import { gridSpacing } from 'store/constant';
+import MainCard from '../../ui-component/cards/MainCard';
+import SubCard from '../../ui-component/cards/SubCard';
 
 // ===============================|| COLOR BOX ||=============================== //
 
