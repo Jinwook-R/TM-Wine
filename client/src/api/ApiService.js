@@ -11,14 +11,14 @@ const toBase64 = (file) =>
     });
 
 export function everyWineInfoRequest() {
-    return axios.get(`${API_BASE_URL}/api/v1/todayswine`);
+    return axios.get(`${API_BASE_URL}/api/v1/todayswine/`);
 }
 
 export async function wineInfoByImageRequest(data) {
     const result = await toBase64(data)
-        .then((e) => {
+        .then((data) => {
             return axios.post(`${API_BASE_URL}/api/v1/label/`, {
-                image: e
+                image: data
             });
         })
         .catch((error) => {

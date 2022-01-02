@@ -7,6 +7,7 @@ import { Typography } from '@mui/material';
 
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
+import AnimateButton from '../../../ui-component/extended/AnimateButton';
 const CardWrapper = styled(MainCard)(({ theme }) => ({
     maxWidth: '500px',
     margin: '130px auto',
@@ -29,15 +30,17 @@ const WineLabelImageRecommendationButton = ({ isLoading }) => {
     return (
         <>
             <CardWrapper border={false} content={false} onClick={onCardClick}>
-                <Typography
-                    sx={{
-                        fontSize: '2.125rem',
-                        textAlign: 'center',
-                        lineHeight: '95px'
-                    }}
-                >
-                    라벨 기반 와인 추천
-                </Typography>
+                <AnimateButton>
+                    <Typography
+                        sx={{
+                            fontSize: '2.125rem',
+                            textAlign: 'center',
+                            lineHeight: '95px'
+                        }}
+                    >
+                        라벨 기반 와인 추천
+                    </Typography>
+                </AnimateButton>
             </CardWrapper>
         </>
     );

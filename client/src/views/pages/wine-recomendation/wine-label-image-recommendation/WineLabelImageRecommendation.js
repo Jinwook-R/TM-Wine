@@ -1,10 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
-
-// redux
-import { wineInfoByImageAction } from '../../../../store/reducers/wine';
-
 // material-ui
-import { Divider, Grid, Stack, Box, Button, Typography, useMediaQuery } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 
 // project imports
 import WineLabelImage from './WineLabelImage';
@@ -19,8 +14,8 @@ const WineLabelImageRecommendation = () => {
                 <WIneCardWrapper>
                     <Grid container spacing={1} alignItems="center" justifyContent="center">
                         <Grid item xs={12}>
-                            <Typography color="#845EC2" gutterBottom style={{ fontSize: 30, textAlign: 'center' }}>
-                                라벨 기반 와인 추천
+                            <Typography color="#845EC2" gutterBottom style={{ fontSize: 50, textAlign: 'center' }}>
+                                라벨로 와인 추천 받기
                             </Typography>
                         </Grid>
                         <Grid item xs={12}>

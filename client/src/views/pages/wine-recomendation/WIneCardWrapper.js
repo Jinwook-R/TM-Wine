@@ -5,7 +5,6 @@ import { Box } from '@mui/material';
 
 // project import
 import MainCard from 'ui-component/cards/MainCard';
-import { borderRadius } from '@mui/system';
 
 // ==============================|| AUTHENTICATION CARD WRAPPER ||============================== //
 
@@ -18,7 +17,7 @@ const WIneCardWrapper = ({ children, ...other }) => (
                 flexBasis: '50%'
             },
             border: '1px solid #9B89B3 !important',
-            borderRadius: '0 !important'
+            borderRadius: '10px !important'
         }}
         content={false}
         {...other}

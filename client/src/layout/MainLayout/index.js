@@ -55,6 +55,22 @@ const MainLayout = () => {
                         TM-WINE
                     </Link>
                 </Typography>
+                <Typography
+                    sx={{
+                        position: 'absolute',
+                        left: '50%',
+                        bottom: 0,
+                        transform: 'translate(-50%,-280%)',
+                        textTransform: 'uppercase',
+                        fontSize: '2.1vw',
+                        letterSpacing: '0.4em',
+                        textIndent: '0.4em',
+                        whiteSpace: 'nowrap',
+                        color: 'black'
+                    }}
+                >
+                    와인 추천 기반 주문 서비스
+                </Typography>
             </Box>
             <Main theme={theme}>
                 <Outlet />

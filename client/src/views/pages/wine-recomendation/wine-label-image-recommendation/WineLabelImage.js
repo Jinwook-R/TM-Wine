@@ -16,7 +16,7 @@ const styledImage = makeStyles({
     root: {
         position: 'relative',
         display: 'block',
-        height: '550px',
+        height: '50vh',
         border: '1px #fff solid',
         '& img': {
             position: 'absolute',
@@ -43,7 +43,6 @@ const styledInput = makeStyles({
         textAlign: 'center',
         border: 'none',
         color: 'white',
-        height: 55,
         textDecoration: 'none',
         cursor: 'pointer'
     }
@@ -76,7 +75,10 @@ const WineLabelImage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!fileList || !fileList.length) return false;
+        if (!fileList || !fileList.length) {
+            alert('파일 업로드를 해주세요');
+            return false;
+        }
         dispatch(wineInfoByImageAction(fileList[0]));
     };
 
@@ -86,17 +88,19 @@ const WineLabelImage = () => {
                 <Grid item xs={12}>
                     <div className="custom__img">
                         <div className={classes.root} id="img__box">
-                            <p style={{ textAlign: 'center', marginTop: 250 }}>
+                            <p style={{ textAlign: 'center', margin: '50px' }}>
                                 <h3 style={{ color: '#B0A8B9' }}>와인 라벨 사진을 업로드 하세요:)</h3>
                             </p>
                         </div>
                     </div>
-                    <form className="upload__input" style={{ width: 350, margin: '0 auto', display: 'block' }}>
-                        <label className={inputClasses.root} for="inputImage">
-                            파일 업로드
-                            <input type="file" id="inputImage" accept="img/*" onChange={onLoadFile} style={{ display: 'none' }} />
-                        </label>
-                    </form>
+                    <AnimateButton>
+                        <form className="upload__input" style={{ width: 350, margin: '0 auto', display: 'block' }}>
+                            <label className={inputClasses.root} for="inputImage">
+                                파일 업로드
+                                <input type="file" id="inputImage" accept="img/*" onChange={onLoadFile} style={{ display: 'none' }} />
+                            </label>
+                        </form>
+                    </AnimateButton>
                 </Grid>
                 <Grid item xs={12}>
                     <Box
@@ -109,15 +113,17 @@ const WineLabelImage = () => {
                     </Box>
                     <form noValidate onSubmit={handleSubmit}>
                         <Box sx={{ textAlign: 'center', marginTop: 2 }}>
-                            <Button
-                                disableElevation
-                                fullWidth
-                                type="submit"
-                                variant="contained"
-                                style={{ width: 350, padding: '12px 0', borderRadius: 5, backgroundColor: '#B0A8B9' }}
-                            >
-                                <span style={{ fontSize: 18 }}>추천받기</span>
-                            </Button>
+                            <AnimateButton>
+                                <Button
+                                    disableElevation
+                                    fullWidth
+                                    type="submit"
+                                    variant="contained"
+                                    style={{ width: 350, padding: '12px 0', borderRadius: 5, backgroundColor: '#B0A8B9' }}
+                                >
+                                    <span style={{ fontSize: 18 }}>추천받기</span>
+                                </Button>
+                            </AnimateButton>
                         </Box>
                     </form>
                 </Grid>

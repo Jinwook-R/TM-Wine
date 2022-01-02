@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 // material-ui
-import { Grid, List, Box, useMediaQuery } from '@mui/material';
+import { Grid } from '@mui/material';
 
 // project imports
 import WineLabelImageRecommendationButton from './WineLabelImageRecommendationButton';
