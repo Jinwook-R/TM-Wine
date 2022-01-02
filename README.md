@@ -19,6 +19,10 @@
 ## Installations
 
 - Front-End:  
+    $ npm init
+    $ npm install
+    $ npm run start
+    
 - Back-End :  
     - Django setup  
     $ pip install django  
