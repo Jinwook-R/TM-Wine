@@ -10,6 +10,10 @@ const toBase64 = (file) =>
         reader.onerror = (error) => reject(error);
     });
 
+export function everyWineInfoRequest() {
+    return axios.get(`${API_BASE_URL}/api/v1/todayswine`);
+}
+
 export async function wineInfoByImageRequest(data) {
     const result = await toBase64(data)
         .then((e) => {

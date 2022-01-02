@@ -1,6 +1,10 @@
 import { all, fork, takeEvery, call, put } from 'redux-saga/effects';
-import { wineInfoByImageRequest, wineInfoByKeywordRequest } from '../../../src/api/ApiService';
+import { everyWineInfoRequest, wineInfoByImageRequest, wineInfoByKeywordRequest } from '../../../src/api/ApiService';
 import * as actions from '../actions/wine';
+
+function everyWineInfoRequestAPI() {
+    return everyWineInfoRequest();
+}
 
 function wineInfoByImageRequestAPI(data) {
     return wineInfoByImageRequest(data);
@@ -8,6 +12,19 @@ function wineInfoByImageRequestAPI(data) {
 
 function wineInfoByKeywordRequestAPI(data) {
     return wineInfoByKeywordRequest(data);
+}
+
+function* everyWineInfo() {
+    try {
+        const everyWineList = yield call(everyWineInfoRequestAPI);
+        console.log(everyWineList);
+        yield put({
+            type: actions.EVERY_WINE_INFO_SUCCESS,
+            payload: everyWineList
+        });
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 function* wineInfoByImage(data) {
@@ -39,6 +56,10 @@ function* wineInfoByKeyword(data) {
     }
 }
 
+function* watchEveryWineInfo() {
+    yield takeEvery(actions.EVERY_WINE_INFO_REQUEST, everyWineInfo);
+}
+
 function* watchWineInfoByImage() {
     yield takeEvery(actions.WINE_INFO_BY_IMAGE_REQUEST, wineInfoByImage);
 }
@@ -48,5 +69,5 @@ function* watchWineInfoByKeyword() {
 }
 
 export default function* wineSaga() {
-    yield all([fork(watchWineInfoByImage), fork(watchWineInfoByKeyword)]);
+    yield all([fork(watchWineInfoByImage), fork(watchWineInfoByKeyword), fork(watchEveryWineInfo)]);
 }

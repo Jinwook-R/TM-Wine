@@ -89,7 +89,7 @@ export default function WineRecommendationDialog() {
         dispatch(LoadWineInfoDoneChange());
     };
     const classes = styledImage();
-
+    console.log(wineList);
     return (
         <div>
             <BootstrapDialog open={loadWineInfoDone} aria-labelledby="customized-dialog-title">

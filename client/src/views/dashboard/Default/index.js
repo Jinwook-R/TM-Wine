@@ -10,39 +10,12 @@ import { gridSpacing } from 'store/constant';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { useTheme } from '@mui/material/styles';
+import TodayWineRecommendation from '../../pages/wine-recomendation/today-wine-recommendation/TodayWineRecommendation';
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
-const styledImage = makeStyles({
-    root: {
-        margin: '0 auto',
-        maxWidth: '550px',
-        position: 'relative',
-        display: 'block',
-        height: '600px',
-        borderWidth: '1px',
-        flexGrow: '1',
-        border: '1px #E3E0F3 solid',
-        backgroundColor: '#E3E0F3',
-        borderRadius: '10px',
-        overflow: 'hidden',
-        '& img': {
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            top: 0,
-            left: 0,
-            bottom: 0,
-            margin: 'auto'
-        }
-    }
-});
-
 const Dashboard = () => {
     const theme = useTheme();
     const [isLoading, setLoading] = useState(true);
-    const classes = styledImage();
-    const matchesXs = useMediaQuery(theme.breakpoints.down('md'));
 
     useEffect(() => {
         setLoading(false);
@@ -51,16 +24,7 @@ const Dashboard = () => {
     return (
         <Grid container sx={{ flexWrap: 'wrap', justifyContent: 'space-between', maxWidth: 1500, margin: '0 auto', paddingTop: '30px' }}>
             <Grid container md={12} lg={6}>
-                <Grid item xs={12}>
-                    <div className="custom__img">
-                        <p>
-                            <h3 style={{ color: '#7485B5', textAlign: 'center', fontSize: 30 }}>오늘의 추천 와인</h3>
-                        </p>
-                        <div className={classes.root} id="img__box">
-                            <img src={process.env.PUBLIC_URL + `/wines/1. MollydookerCarnivalofLove.PNG`} alt="" />
-                        </div>
-                    </div>
-                </Grid>
+                <TodayWineRecommendation />
             </Grid>
             <Grid container md={12} lg={6}>
                 <div style={{ width: '100%' }}>

@@ -108,7 +108,7 @@ const WineLabelImage = () => {
                         <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
                     </Box>
                     <form noValidate onSubmit={handleSubmit}>
-                        <Box sx={{ textAlign: 'center' }}>
+                        <Box sx={{ textAlign: 'center', marginTop: 2 }}>
                             <Button
                                 disableElevation
                                 fullWidth
