@@ -20,14 +20,12 @@ def labelRecommendation(request):
     if request.method != 'POST':
         return HttpResponse("Bad Request", status=400)
 
-    requestBody = QueryDict.dict(request.data)              # 요청 바디 불러오기 (django 내의 QueryDict type)
-    with open('img.png', "wb") as f:                        # TODO : 이미지 파일명 수정해서 다른 경로에 저장
+    requestBody = QueryDict.dict(request.data)
+    with open('img.png', "wb") as f:
         f.write(base64.b64decode(requestBody['image']))
 
     PATH = os.getcwd()
     label_name = Labeldetection.LabelDetector(PATH + "/img.png")
-    print("##########")
-    print(label_name)
 
     if(label_name=='None') :
        return HttpResponse("Nothing detected")
@@ -59,16 +57,12 @@ def labelRecommendation(request):
 
     clustered_num = recommend_based_label.Wine_recomender(wine_info)
 
-
-
     ## find similar wine's PK
     sql_cmd = 'SELECT 와인번호 FROM HotelWine where 군집 = %s ORDER BY 평점 DESC LIMIT 2'
     db_conn.execute(sql_cmd, (clustered_num))
     ret = db_conn.fetchall()
-
     ## find similar wine's info
     responseBody={}
-
     # for dic
     db_conn = conn.cursor(pymysql.cursors.DictCursor)
 
@@ -76,7 +70,6 @@ def labelRecommendation(request):
     db_conn.execute(sql_cmd, (int(ret[0][0])))
     test = db_conn.fetchall()
     tmp = test[0]
-
     response1 = {}
     response1['id'] = tmp['와인번호']
     response1['name'] = tmp['품명영문'].replace(";", ",") + " (" + \
@@ -92,13 +85,9 @@ def labelRecommendation(request):
     response1['tannin'] = tmp['타닌']
     responseBody['result1'] = response1
 
-
-
     db_conn.execute(sql_cmd, (int(ret[1][0])))
     test = db_conn.fetchall()
     tmp = test[0]
-
-
     response2 = {}
     response2['id'] = tmp['와인번호']
     response2['name'] = tmp['품명영문'].replace(";", ",") + " (" + \
@@ -113,15 +102,7 @@ def labelRecommendation(request):
     response2['body'] = tmp['바디']
     response2['tannin'] = tmp['타닌']
     responseBody['result2'] = response2
-
-
-
-
     return JsonResponse(responseBody, status=200)
-
-
-
-
 
 @api_view(['POST'])
 def keywordRecommendation(request):
@@ -130,19 +111,15 @@ def keywordRecommendation(request):
 
     requestBody = QueryDict.dict(request.data)
     keyword = "키워드" + str(requestBody['keyword'])
-    print("keyword")
-    print(keyword)
+
     topKeyword = Review.objects.order_by("-" + keyword)
     topKeywordList = []  # list of [wineId, keyword cnt]
     for x in range(topKeyword.values().count()):
         topKeywordList.append([topKeyword.values()[x]['와인번호_id'], topKeyword.values()[x][keyword]])
-    print("keyword list")
-    print(topKeywordList)
 
     topRated = HotelWine.objects.order_by("-평점")
     topRatedId = [r['와인번호_id'] for r in topRated.values()]  # list of PKs of top rated wines
-    print("rated list")
-    print(topRatedId)
+
     # Top 2 wines : sort by 평점 if keyword cnt is same
     topWineId = []
     topWine = []
@@ -163,9 +140,6 @@ def keywordRecommendation(request):
             else:
                 topWine.append(w2)
                 topWineId.append(w2)
-        print("!!!!!!!!")
-        print(topWineId)
-        print(topWine)
 
     result1 = Wine.objects.get(pk=topWine[0])
     result2 = Wine.objects.get(pk=topWine[1])
@@ -208,7 +182,6 @@ def dailyRecommendation(request):
         return HttpResponse("Bad Request", status=400)
 
     wineId = Wine.objects.values_list('와인번호', flat=True)
-    #randomId = choice(wineId)
     randomId = randrange(1,30)
     randomWine = Wine.objects.get(pk=randomId)
 
