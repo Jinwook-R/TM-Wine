@@ -26,11 +26,13 @@ def labelRecommendation(request):
 
     PATH = os.getcwd()
     label_name = Labeldetection.LabelDetector(PATH + "/img.png")
+    print("##########")
+    print(label_name)
 
-    #if(label_name=='None') :
-    #    return HttpResponse("Nothing detected")
+    if(label_name=='None') :
+       return HttpResponse("Nothing detected")
 
-    conn = pymysql.connect(host="localhost", user="mina", password="1234", db="FINAL_test_DB")
+    conn = pymysql.connect(host="localhost", user="root", password="1234", db="Tmwine")
     db_conn = conn.cursor()
     wine_info=[]
 
@@ -128,19 +130,28 @@ def keywordRecommendation(request):
 
     requestBody = QueryDict.dict(request.data)
     keyword = "키워드" + str(requestBody['keyword'])
-
+    print("keyword")
+    print(keyword)
     topKeyword = Review.objects.order_by("-" + keyword)
     topKeywordList = []  # list of [wineId, keyword cnt]
     for x in range(topKeyword.values().count()):
         topKeywordList.append([topKeyword.values()[x]['와인번호_id'], topKeyword.values()[x][keyword]])
+    print("keyword list")
+    print(topKeywordList)
+
     topRated = HotelWine.objects.order_by("-평점")
     topRatedId = [r['와인번호_id'] for r in topRated.values()]  # list of PKs of top rated wines
+    print("rated list")
+    print(topRatedId)
     # Top 2 wines : sort by 평점 if keyword cnt is same
+    topWineId = []
     topWine = []
     for i in range(1, len(topKeywordList)):
         if (len(topWine) == 2): break
+        if(topKeywordList[i-1][0] in topWineId): continue
         if (topKeywordList[i][1] != topKeywordList[i - 1][1]):
             topWine.append(topKeywordList[i - 1][0])
+            topWineId.append(topKeywordList[i - 1][0])
         else:
             w1 = topKeywordList[i - 1][0]
             w2 = topKeywordList[i][0]
@@ -148,8 +159,13 @@ def keywordRecommendation(request):
             idx2 = topRatedId.index(w2)
             if (idx1 < idx2):
                 topWine.append(w1)
+                topWineId.append(w1)
             else:
                 topWine.append(w2)
+                topWineId.append(w2)
+        print("!!!!!!!!")
+        print(topWineId)
+        print(topWine)
 
     result1 = Wine.objects.get(pk=topWine[0])
     result2 = Wine.objects.get(pk=topWine[1])
@@ -183,6 +199,7 @@ def keywordRecommendation(request):
     response2['body'] = result2.바디
     response2['tannin'] = result2.타닌
     responseBody['result2'] = response2
+    print(responseBody)
     return JsonResponse(responseBody, status=200)
 
 @api_view(['GET'])
