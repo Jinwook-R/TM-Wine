@@ -54,10 +54,7 @@ def split_data(data):
 
 # list 예시 : [A 50% B 30%, 1, 3, 3, 3]
 def PredictCluster(list):
-
     PATH = os.getcwd()
-
-
     ## one-hot-encoding 용 template
     template_path = PATH + '/api/flow2/DB_to_ML.csv'
     df_encoding = pd.read_csv(template_path, encoding='UTF8')
@@ -76,7 +73,6 @@ def PredictCluster(list):
     df_encoding['바디_%d' % list[3]] = 1
     df_encoding['타닌_%d' % list[4]] = 1
 
-
     X_data = df_encoding.to_numpy()
 
     input_data = torch.Tensor(X_data).float()
@@ -90,11 +86,6 @@ def PredictCluster(list):
     y_pred = np.argmax(pred.detach().cpu().numpy(), axis=1).flatten()
 
     return y_pred[0]
-
-
-
-#############
-
 
 def main():
     """Run administrative tasks."""
