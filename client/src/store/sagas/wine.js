@@ -31,6 +31,7 @@ function* wineInfoByImage(data) {
     try {
         data = data.payload.wineImage;
         const wineList = yield call(wineInfoByImageRequestAPI, data);
+        console.log('wineList: ', wineList);
         yield put({
             type: actions.WINE_INFO_BY_IMAGE_SUCCESS,
             payload: wineList
