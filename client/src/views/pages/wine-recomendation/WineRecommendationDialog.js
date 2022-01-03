@@ -208,45 +208,47 @@ export default function WineRecommendationDialog() {
                                     <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>바디감: {e.body}</h2>
                                     <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>타닌감: {e.tannin}</h2>
                                     <Grid container style={{ justifyContent: 'left' }}>
-                                        <AnimateButton>
-                                            <Button
-                                                onClick={handleButton}
-                                                disableElevation
-                                                fullWidth
-                                                type="Button"
-                                                variant="contained"
-                                                style={{
-                                                    display: 'block',
-                                                    width: 350,
-                                                    padding: '12px 0',
-                                                    borderRadius: 5,
-                                                    backgroundColor: '#B0A8B9'
-                                                }}
-                                            >
-                                                <span style={{ fontSize: 30 }}>주문하기</span>
-                                            </Button>
-                                        </AnimateButton>
-                                        <AnimateButton>
-                                            <Button
-                                                className={e.id}
-                                                id={e.id}
-                                                onClick={handleWordCloudButton}
-                                                disableElevation
-                                                fullWidth
-                                                type="Button"
-                                                variant="contained"
-                                                style={{
-                                                    marginLeft: 10,
-                                                    display: 'inline',
-                                                    width: 300,
-                                                    padding: '12px 0',
-                                                    borderRadius: 5,
-                                                    backgroundColor: '#B0A8B9'
-                                                }}
-                                            >
-                                                <span style={{ fontSize: 30 }}>와인 관련 키워드 확인</span>
-                                            </Button>
-                                        </AnimateButton>
+                                        <Grid item xs={6}>
+                                            <AnimateButton>
+                                                <Button
+                                                    onClick={handleButton}
+                                                    disableElevation
+                                                    fullWidth
+                                                    type="Button"
+                                                    variant="contained"
+                                                    style={{
+                                                        display: 'block',
+                                                        padding: '12px 0',
+                                                        borderRadius: 5,
+                                                        backgroundColor: '#B0A8B9'
+                                                    }}
+                                                >
+                                                    <span style={{ fontSize: 30 }}>주문하기</span>
+                                                </Button>
+                                            </AnimateButton>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <AnimateButton>
+                                                <Button
+                                                    className={e.id}
+                                                    id={e.id}
+                                                    onClick={handleWordCloudButton}
+                                                    disableElevation
+                                                    fullWidth
+                                                    type="Button"
+                                                    variant="contained"
+                                                    style={{
+                                                        marginLeft: 10,
+                                                        display: 'inline',
+                                                        padding: '12px 0',
+                                                        borderRadius: 5,
+                                                        backgroundColor: '#B0A8B9'
+                                                    }}
+                                                >
+                                                    <span style={{ fontSize: 30 }}>와인 관련 키워드 확인</span>
+                                                </Button>
+                                            </AnimateButton>
+                                        </Grid>
                                     </Grid>
                                 </Grid>
                             </Grid>
