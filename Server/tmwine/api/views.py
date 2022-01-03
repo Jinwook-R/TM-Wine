@@ -63,6 +63,7 @@ def labelRecommendation(request):
     ret = db_conn.fetchall()
     ## find similar wine's info
     responseBody={}
+    responseBody['labelName'] = label_name
     # for dic
     db_conn = conn.cursor(pymysql.cursors.DictCursor)
 
