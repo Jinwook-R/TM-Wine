@@ -1,0 +1,34 @@
+﻿아이디,품명(영문),품명(국문),가격,카테고리,생산지,품종,도수,당도,산도,바디,타닌,평점
+1,Mollydooker Carnival of Love,몰리두커 카니발 오브 러브,200000,레드,호주,시라/쉬라즈(Syrah/Shiraz) 100%,16,2,3,5,5,4.4
+2,Ridge Vineyards Monte Bello,릿지 몬테 벨로,430000,레드,미국,"카베르네 소비뇽(Cabernet Sauvignon) 88%, 메를로(Merlot) 8%, 카베르네 프랑(Cabernet Franc) 4%",14,1,3,5,4,4.5
+3,Lamborn Family Vineyards Cabernet Sauvignon,"램본 패밀리 빈야드, 까베르네 쇼비뇽",360000,레드,미국,카베르네 소비뇽(Cabernet Sauvignon) 100%,15,1,1,1,1,3.8
+4,Napa Valley Cabernet Sauvignon,실버 오크 나파 벨리 까베르네 소비뇽,290000,레드,미국,"카베르네 소비뇽(Cabernet Sauvignon) 78%, 메를로(Merlot) 12%, 카베르네 프랑(Cabernet Franc) 7%, 말벡(Malbec) 2%",14,1,3,5,5,4.5
+5,"Silver Oak, Alexander Valley Cabernet Sauvignon","실버 오크, 알렉산더 밸리 까베르네 소비뇽",230000,레드,미국,"카베르네 소비뇽(Cabernet Sauvignon) 98%, 메를로(Merlot) 2%",13.5,1,3,5,5,4.4
+6,Reserve Selection Merlot,레이몬드 리저브 실렉션 메를로,100000,레드,미국,"카베르네 소비뇽(Cabernet Sauvignon) 9%, 메를로(Merlot) 90%, 쁘띠 시라(Petite Sirah) 1%",14,1,2,4,3,3.9
+7,Testamatta,"비비그라츠, 테스타마타 로쏘",290000,레드,이탈리아,산지오베제(Sangiovese) 100%,14,1,4,5,5,4.3
+8,"Batasiolo, Barolo 'Briccolina'","바타시올로, 바롤로 '브리꼴리나'",260000,레드,이탈리아,네비올로(Nebbiolo) 100%,14.5,1,4,5,5,4.1
+9,Vineto Poggio Sant’Enrico Vino,비네토 포지오 생 엔리코 비노 노빌레 디 몬테풀치아노,190000,레드,이탈리아,산지오베제(Sangiovese) 100%,14,1,4,5,4,4.3
+10,Brunello di Montalcino,"까르피네토, 브루넬로 디 몬탈치노",150000,레드,이탈리아,산지오베제(Sangiovese) 100%,15,1,3,5,4,4.2
+11,"Gaja, Magar",가야 마가리,100000,레드,이탈리아,"카베르네 소비뇽(Cabernet Sauvignon) 30%, 카베르네 프랑(Cabernet Franc) 60%, 쁘띠 베르도(Petit Verdot) 10%",14,1,3,4,4,4.2
+12,"Tenuta San Guido, Guidalberto",테누타 산 귀도 귀달베르토,80000,레드,이탈리아,"카베르네 소비뇽(Cabernet Sauvignon) 60%, 메를로(Merlot) 40%",14,1,4,3,3,4.1
+13,"Gaja, Promis","가야, 프로미스",80000,레드,이탈리아,"메를로(Merlot) 55%, 시라/쉬라즈(Syrah/Shiraz) 35%, 산지오베제(Sangiovese) 10%",14,2,3,4,4,4.1
+14,Chateau Pichon Baron,샤또 피숑 바론,340000,레드,프랑스,"카베르네 소비뇽(Cabernet Sauvignon) 77%, 메를로(Merlot) 23%",13,1,4,4,4,4.4
+15,Clos du Pic,"샤또 푸에슈오, 끌로 뒤 픽",210000,레드,프랑스,"시라/쉬라즈(Syrah/Shiraz) 40%, 무르베드르(Mourvedre) 60%",13,1,4,5,5,4.3
+16,Pernand Vergelesses Ill des Ve,뻬르낭 베르즐레스 일 데 베르즐레스 프르미에 크뤼,190000,레드,프랑스,피노 누아(Pinot Noir) 100%,14,1,4,3,3,3.9
+17,"Louis Roederer, Cristal",루이 로드레 크리스탈,640000,스파클링,프랑스,"피노 누아(Pinot Noir) 55%, 샤르도네(Chardonnay) 45%",12,3,3,5,1,4.6
+18,"Louis Roederer, Brut Nature Rose","루이 로드레, 브륏 나투르 로제",300000,스파클링,프랑스,"피노 누아(Pinot Noir) 55%, 피노 뮈니에(Pinot Meunier) 25%, 샤르도네(Chardonnay) 20%",12,1,3,4,1,4.2
+19,"Maldonado, Farm Worker Chardonnay","말도나도, 팜 워커 샤도네이",140000,화이트,미국,샤르도네(Chardonnay) 100%,14.5,1,3,3,1,4.1
+20,"Batasiolo, Langhe Chardonnay Morino","바타시올로, 랑게 샤르도네 모리노",88000,화이트,이탈리아,샤르도네(Chardonnay) 100%,12.5,1,3,3,1,3.7
+21,"Camille Giroud, Bourgogne Chardonnay","카밀 지로, 부르고뉴 샤도네이",110000,화이트,프랑스,샤르도네(Chardonnay) 100%,12.5,1,3,1,1,3.8
+22,"Franz-Haas, Moscato Rosa","프란자스, 모스카토 로사",168000,레드,이탈리아,모스카토 로사(Moscato Rosa) 100%,11.5,4,2,3,1,4.2
+23,"H.Matthias, Rieling Auslese Bio","마티아즈, 리슬링 아우스레제",110000,화이트,오스트리아,리슬링(Riesling) 100%,12.5,4,2,3,1,4.1
+24,"Inniskillin, Sparkling Vidal","이니스킬린, 스파클링 비달",177000,스파클링,캐나다,비달(Vidal) 100%,11.5,5,3,4,1,4.3
+25,Villa Jolanda Asti,빌라 요란다 아스티,100000,스파클링,이탈리아,모스카토(Moscato ) 100%,7.5,4,2,2,1,4
+26,Cinque Terre Sciacchetra,칭퀘테레 샤케트라,200000,화이트,이탈리아,"보스코(Bosco) 80%, 알라롤라(Albarola) 15%, 베르멘티노(Vermentino) 5%",14.5,5,2,4,1,4.1
+27,"Far Niente, Dolce","파 니엔테, 돌체",200000,화이트,미국,"세미용(Semillon) 93%, 소비뇽 블랑(Sauvignon Blanc) 7%",14.1,5,2,5,1,4
+28,"Prum Mosel, Riesling Auslese","프림 모젤, 리슬링 아우스레제",100000,화이트,독일,리슬링(Riesling) 100%,13,4,2,3,1,4.2
+29,"Marcel Deiss, Riesling Vendanges Tardives","마르셀 다이스, 리슬링 방당주 타르디브",120000,화이트,프랑스,리슬링(Riesling) 100%,13,4,4,4,1,4
+30,"Bellavista, Nectar","벨라비스타, 넥타",183000,스파클링,이탈리아,샤르도네(Chardonnay) 100%,12,4,2,3,1,4
+31,G7 Reserva Cabernet Sauvignon,G7 레세르바 까베르네 소비뇽,14000,레드,칠레,카베르네 소비뇽(Cabernet Sauvignon) 100%,16,1,3,3,3,3.6
+32,"Yellow Tail, Semillon Sauvignon Blanc","옐로우 테일, 세미용 소비뇽 블랑",5000,화이트,호주,"세미용(Semillon) 50%, 소비뇽 블랑(Sauvignon Blanc) 50%",9,1,4,2,1,3.3
+33,MMM,음,6900,레드,이탈리아,"메를로(Merlot) 10%, 프리미티보(Primitivo) 40%, 몬테풀치아노(Montepulciano) 30%, 네로 다볼라(Nero d'Avola) 20%",12,2,1,2,1,2.4
