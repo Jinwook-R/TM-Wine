@@ -1,6 +1,6 @@
 import os, base64
 from pathlib import Path
-from random import choice
+from random import choice, randrange
 from PIL import Image
 from django.shortcuts import render
 from .models import *
@@ -135,7 +135,6 @@ def keywordRecommendation(request):
         topKeywordList.append([topKeyword.values()[x]['와인번호_id'], topKeyword.values()[x][keyword]])
     topRated = HotelWine.objects.order_by("-평점")
     topRatedId = [r['와인번호_id'] for r in topRated.values()]  # list of PKs of top rated wines
-
     # Top 2 wines : sort by 평점 if keyword cnt is same
     topWine = []
     for i in range(1, len(topKeywordList)):
@@ -192,7 +191,8 @@ def dailyRecommendation(request):
         return HttpResponse("Bad Request", status=400)
 
     wineId = Wine.objects.values_list('와인번호', flat=True)
-    randomId = choice(wineId)
+    #randomId = choice(wineId)
+    randomId = randrange(1,30)
     randomWine = Wine.objects.get(pk=randomId)
 
     responseBody = {}
