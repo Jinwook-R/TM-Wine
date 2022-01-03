@@ -3,7 +3,6 @@ import { API_BASE_URL } from './config';
 
 const toBase64 = (file) =>
     new Promise((resolve, reject) => {
-        console.log(file);
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
@@ -17,6 +16,7 @@ export function everyWineInfoRequest() {
 export async function wineInfoByImageRequest(data) {
     const result = await toBase64(data)
         .then((data) => {
+            data = data.split(',')[1];
             return axios.post(`${API_BASE_URL}/api/v1/label/`, {
                 image: data
             });
@@ -28,6 +28,5 @@ export async function wineInfoByImageRequest(data) {
 }
 
 export function wineInfoByKeywordRequest(data) {
-    console.log('wineInfoByKeywordRequest', data);
     return axios.post(`${API_BASE_URL}/api/v1/keyword/`, data);
 }
