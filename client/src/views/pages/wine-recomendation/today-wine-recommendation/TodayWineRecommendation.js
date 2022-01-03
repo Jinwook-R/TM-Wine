@@ -230,43 +230,43 @@ export default function TodayWineRecommendation() {
                             <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>바디감: {todayWine?.body}</h2>
                             <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>타닌감: {todayWine?.tannin}</h2>
                             <Grid container style={{ justifyContent: 'left' }}>
-                                <AnimateButton>
-                                    <Button
-                                        onClick={handleButton}
-                                        disableElevation
-                                        fullWidth
-                                        type="Button"
-                                        variant="contained"
-                                        style={{
-                                            display: 'inline',
-                                            width: 250,
-                                            padding: '12px 0',
-                                            borderRadius: 5,
-                                            backgroundColor: '#B0A8B9'
-                                        }}
-                                    >
-                                        <span style={{ fontSize: 30 }}>주문하기</span>
-                                    </Button>
-                                </AnimateButton>
-                                <AnimateButton>
-                                    <Button
-                                        onClick={handleWordCloudButton}
-                                        disableElevation
-                                        fullWidth
-                                        type="Button"
-                                        variant="contained"
-                                        style={{
-                                            marginLeft: 10,
-                                            display: 'inline',
-                                            width: 300,
-                                            padding: '12px 0',
-                                            borderRadius: 5,
-                                            backgroundColor: '#B0A8B9'
-                                        }}
-                                    >
-                                        <span style={{ fontSize: 30 }}>와인 관련 키워드 확인</span>
-                                    </Button>
-                                </AnimateButton>
+                                <Grid item xs={6}>
+                                    <AnimateButton>
+                                        <Button
+                                            onClick={handleButton}
+                                            disableElevation
+                                            fullWidth
+                                            type="Button"
+                                            variant="contained"
+                                            style={{
+                                                padding: '12px 0',
+                                                borderRadius: 5,
+                                                backgroundColor: '#B0A8B9'
+                                            }}
+                                        >
+                                            <span style={{ fontSize: 30 }}>주문하기</span>
+                                        </Button>
+                                    </AnimateButton>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <AnimateButton>
+                                        <Button
+                                            onClick={handleWordCloudButton}
+                                            disableElevation
+                                            fullWidth
+                                            type="Button"
+                                            variant="contained"
+                                            style={{
+                                                marginLeft: 10,
+                                                padding: '12px 0',
+                                                borderRadius: 5,
+                                                backgroundColor: '#B0A8B9'
+                                            }}
+                                        >
+                                            <span style={{ fontSize: 30 }}>와인 관련 키워드 확인</span>
+                                        </Button>
+                                    </AnimateButton>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
