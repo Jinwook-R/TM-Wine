@@ -164,7 +164,6 @@ export default function WineRecommendationDialog() {
     };
 
     const handleOrderButton = (e) => {
-        console.log(e.target.name);
         if (!roomNumber) {
             alert('호수를 입력하세요');
             return false;
@@ -175,6 +174,7 @@ export default function WineRecommendationDialog() {
                 roomNum: roomNumber
             })
         );
+        alert(`${roomNumber}호 주문이 완료되었습니다.`);
         setRoomNumber(0);
         setOpenModal(false);
     };

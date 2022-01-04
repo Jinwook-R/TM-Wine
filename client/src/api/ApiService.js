@@ -2,7 +2,6 @@ import axios from 'axios';
 import { API_BASE_URL, API_BASE_URL2 } from './config';
 
 export function wineOrderRequest(data) {
-    console.log(data, '!!!!!');
     return axios.post(`${API_BASE_URL2}/order`, data);
 }
 
