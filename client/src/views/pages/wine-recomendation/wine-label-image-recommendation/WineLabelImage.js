@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, Divider, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
+import CircularProgress from '@mui/material/CircularProgress';
+
 import AnimateButton from '../../../../ui-component/extended/AnimateButton';
 import { wineInfoByImageAction } from '../../../../store/reducers/wine';
 import WineRecommendationDialog from '../WineRecommendationDialog';
@@ -51,7 +53,7 @@ const WineLabelImage = () => {
     const inputClasses = styledInput();
     const [fileList, setFileList] = useState('');
     const dispatch = useDispatch();
-    const isLoadWineInfoDone = useSelector((state) => state.wine.loadWineInfoDone);
+    const loadWineInfoLoading = useSelector((state) => state.wine.loadWineInfoLoading);
     const onLoadFile = (e) => {
         const file = e.target.files;
         setFileList(file);
@@ -162,6 +164,11 @@ const WineLabelImage = () => {
                 </Grid>
             </Grid>
             <WineRecommendationDialog />
+            {loadWineInfoLoading && (
+                <Box sx={{ display: 'flex' }}>
+                    <CircularProgress />
+                </Box>
+            )}
         </>
     );
 };
