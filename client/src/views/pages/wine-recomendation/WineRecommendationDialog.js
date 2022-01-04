@@ -5,7 +5,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch, useSelector } from 'react-redux';
-import { LoadWineInfoDoneChange, wineOrderAction } from '../../../store/reducers/wine';
+import { LoadWineInfoDoneChangeAction, wineLabelNameChangeAction, wineOrderAction } from '../../../store/reducers/wine';
 import { Box, Button, Divider, Grid, Modal, TextField, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import AnimateButton from '../../../ui-component/extended/AnimateButton';
@@ -138,6 +138,7 @@ export default function WineRecommendationDialog() {
     const dispatch = useDispatch();
     const loadWineInfoDone = useSelector((state) => state.wine.loadWineInfoDone);
     const wineList = useSelector((state) => state.wine.wineList);
+    const labelName = useSelector((state) => state.wine.labelName);
     const [openModal, setOpenModal] = useState(false);
     const [roomNumber, setRoomNumber] = useState('');
     const [wineName, setWineName] = useState('');
@@ -145,11 +146,13 @@ export default function WineRecommendationDialog() {
     const wordCloud = styledWordCloud();
 
     const handleClose = () => {
-        dispatch(LoadWineInfoDoneChange());
+        dispatch(LoadWineInfoDoneChangeAction());
+        dispatch(wineLabelNameChangeAction());
     };
     const classes = styledImage();
 
     const handleButton = (e) => {
+        if (e.currentTarget != e.target) return;
         setWineName(e.target.name);
         setOpenModal(true);
     };
@@ -195,7 +198,9 @@ export default function WineRecommendationDialog() {
                     id="customized-dialog-title"
                     onClose={handleClose}
                 >
-                    <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 50 }}>추천 와인</h3>
+                    {labelName && <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35 }}>{labelName}</h3>}
+                    {labelName === '' && <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35 }}> </h3>}
+                    <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35 }}>추천 와인</h3>
                 </BootstrapDialogTitle>
                 <div style={{ padding: 30 }}>
                     {wineList.map((e) => (

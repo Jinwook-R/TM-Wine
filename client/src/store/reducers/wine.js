@@ -11,7 +11,8 @@ import {
     EVERY_WINE_INFO_FAILURE,
     WINE_ORDER_BY_ROOM_NUMBER_REQUEST,
     WINE_ORDER_BY_ROOM_NUMBER_SUCCESS,
-    WINE_ORDER_BY_ROOM_NUMBER_FAILURE
+    WINE_ORDER_BY_ROOM_NUMBER_FAILURE,
+    WINE_LABEL_NAME_CHANGE
 } from '../actions/wine.js';
 
 export const initialState = {
@@ -25,7 +26,14 @@ export const initialState = {
     loadWineOrderDone: false,
     loadWineOrderError: false,
     wineList: [],
-    everyWineList: {}
+    everyWineList: {},
+    labelName: ''
+};
+
+export const wineLabelNameChangeAction = () => {
+    return {
+        type: WINE_LABEL_NAME_CHANGE
+    };
 };
 
 export const wineOrderAction = (data) => {
@@ -59,7 +67,7 @@ export const wineInfoByKeywordAction = (data) => {
     };
 };
 
-export const LoadWineInfoDoneChange = () => {
+export const LoadWineInfoDoneChangeAction = () => {
     return {
         type: LOAD_WINE_INFO_DONE_CHANGE
     };
@@ -69,6 +77,11 @@ export default (state = initialState, action) => {
     const { type, payload, error } = action;
     console.log(payload);
     switch (type) {
+        case WINE_LABEL_NAME_CHANGE:
+            return {
+                ...state,
+                labelName: ''
+            };
         case EVERY_WINE_INFO_REQUEST:
             return {
                 ...state,
@@ -94,11 +107,13 @@ export default (state = initialState, action) => {
                 loadWineInfoLoading: true
             };
         case WINE_INFO_BY_IMAGE_SUCCESS:
+            const wineResult = Object.values(payload).slice(1, Object.keys(payload).length);
             return {
                 ...state,
                 loadWineInfoLoading: false,
                 loadWineInfoDone: true,
-                wineList: Object.values(payload) ?? []
+                wineList: wineResult ?? [],
+                labelName: payload.labelName
             };
         case WINE_INFO_BY_IMAGE_FAILURE:
             return {
