@@ -85,7 +85,7 @@ def labelRecommendation(request):
     response1['body'] = tmp['바디']
     response1['tannin'] = tmp['타닌']
     responseBody['result1'] = response1
-
+    print(responseBody)
     db_conn.execute(sql_cmd, (int(ret[1][0])))
     test = db_conn.fetchall()
     tmp = test[0]
