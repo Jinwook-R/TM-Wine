@@ -1,6 +1,10 @@
 import { all, fork, takeEvery, call, put } from 'redux-saga/effects';
-import { everyWineInfoRequest, wineInfoByImageRequest, wineInfoByKeywordRequest } from '../../../src/api/ApiService';
+import { everyWineInfoRequest, wineInfoByImageRequest, wineOrderRequest, wineInfoByKeywordRequest } from '../../../src/api/ApiService';
 import * as actions from '../actions/wine';
+
+function wineOrderRequestAPI(data) {
+    return wineOrderRequest(data);
+}
 
 function everyWineInfoRequestAPI() {
     return everyWineInfoRequest();
@@ -14,16 +18,31 @@ function wineInfoByKeywordRequestAPI(data) {
     return wineInfoByKeywordRequest(data);
 }
 
+function* orderWine(data) {
+    try {
+        const res = yield call(wineOrderRequestAPI, data);
+        alert(`${data.roomNum}호 주문이 완료되었습니다.`);
+        yield put({
+            type: actions.WINE_ORDER_BY_ROOM_NUMBER_SUCCESS
+        });
+    } catch (e) {
+        yield put({
+            type: actions.WINE_ORDER_BY_ROOM_NUMBER_FAILURE
+        });
+    }
+}
+
 function* everyWineInfo() {
     try {
         const everyWineList = yield call(everyWineInfoRequestAPI);
-        console.log('everyWineList:', everyWineList);
         yield put({
             type: actions.EVERY_WINE_INFO_SUCCESS,
             payload: everyWineList.data
         });
     } catch (e) {
-        console.log(e);
+        yield put({
+            type: actions.EVERY_WINE_INFO_FAILURE
+        });
     }
 }
 
@@ -56,6 +75,10 @@ function* wineInfoByKeyword(data) {
     }
 }
 
+function* watchOrderWine() {
+    yield takeEvery(actions.WINE_ORDER_BY_ROOM_NUMBER_REQUEST, orderWine);
+}
+
 function* watchEveryWineInfo() {
     yield takeEvery(actions.EVERY_WINE_INFO_REQUEST, everyWineInfo);
 }
@@ -69,5 +92,5 @@ function* watchWineInfoByKeyword() {
 }
 
 export default function* wineSaga() {
-    yield all([fork(watchWineInfoByImage), fork(watchWineInfoByKeyword), fork(watchEveryWineInfo)]);
+    yield all([fork(watchWineInfoByImage), fork(watchWineInfoByKeyword), fork(watchEveryWineInfo), fork(watchOrderWine)]);
 }

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Box, Button, Divider, Grid, Modal, TextField, Typography, useMediaQuery } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { everyWineInfoAction } from '../../../../store/reducers/wine';
+import { everyWineInfoAction, wineOrderAction } from '../../../../store/reducers/wine';
 import AnimateButton from '../../../../ui-component/extended/AnimateButton';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
@@ -147,7 +147,7 @@ export default function TodayWineRecommendation() {
     const dispatch = useDispatch();
     const [openDialog, setOpenDialog] = useState(false);
     const [openModal, setOpenModal] = useState(false);
-    const [roomNumber, setRoomNumber] = useState('');
+    const [roomNumber, setRoomNumber] = useState(0);
 
     const [keywordModal, setKeywordModal] = useState(false);
 
@@ -170,11 +170,11 @@ export default function TodayWineRecommendation() {
     const handleDialogClose = () => {
         setOpenModal(false);
         setKeywordModal(false);
-        setRoomNumber('');
+        setRoomNumber(0);
     };
 
     const handleRoomNumber = (e) => {
-        setRoomNumber(e.target.value);
+        setRoomNumber(Number(e.target.value));
     };
 
     const handleOrderButton = () => {
@@ -182,8 +182,13 @@ export default function TodayWineRecommendation() {
             alert('호수를 입력하세요');
             return false;
         }
-        alert(`${roomNumber}호 주문이 완료되었습니다.`);
-        setRoomNumber('');
+        dispatch(
+            wineOrderAction({
+                wineName: todayWine.name,
+                roomNum: roomNumber
+            })
+        );
+        setRoomNumber(0);
         setOpenModal(false);
     };
 

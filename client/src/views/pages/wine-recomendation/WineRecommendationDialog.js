@@ -5,7 +5,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch, useSelector } from 'react-redux';
-import { LoadWineInfoDoneChange } from '../../../store/reducers/wine';
+import { LoadWineInfoDoneChange, wineOrderAction } from '../../../store/reducers/wine';
 import { Box, Button, Divider, Grid, Modal, TextField, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import AnimateButton from '../../../ui-component/extended/AnimateButton';
@@ -140,6 +140,7 @@ export default function WineRecommendationDialog() {
     const wineList = useSelector((state) => state.wine.wineList);
     const [openModal, setOpenModal] = useState(false);
     const [roomNumber, setRoomNumber] = useState('');
+    const [wineName, setWineName] = useState('');
     const [keywordModal, setKeywordModal] = useState(false);
     const wordCloud = styledWordCloud();
 
@@ -149,6 +150,7 @@ export default function WineRecommendationDialog() {
     const classes = styledImage();
 
     const handleButton = (e) => {
+        setWineName(e.target.name);
         setOpenModal(true);
     };
 
@@ -158,12 +160,18 @@ export default function WineRecommendationDialog() {
         setRoomNumber('');
     };
 
-    const handleOrderButton = () => {
+    const handleOrderButton = (e) => {
+        console.log(e.target.name);
         if (!roomNumber) {
             alert('호수를 입력하세요');
             return false;
         }
-        alert(`${roomNumber}호 주문이 완료되었습니다.`);
+        dispatch(
+            wineOrderAction({
+                wineName: wineName,
+                roomNum: roomNumber
+            })
+        );
         setRoomNumber('');
         setOpenModal(false);
     };
@@ -199,18 +207,19 @@ export default function WineRecommendationDialog() {
                                     </div>
                                 </Grid>
                                 <Grid item xs={7} style={{ marginTop: 20, paddingLeft: 10 }}>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>{e.name.split('(')[0]}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>가격: {e.price}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>원산지: {e.origin}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>알콜 도수: {e.alcoholicity}%</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>당도: {e.sweetness}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>산도: {e.acidity}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>바디감: {e.body}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>타닌감: {e.tannin}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>{e?.name?.split('(')[0]}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>가격: {e?.price}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>원산지: {e?.origin}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>알콜 도수: {e?.alcoholicity}%</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>당도: {e?.sweetness}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>산도: {e?.acidity}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>바디감: {e?.body}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>타닌감: {e?.tannin}</h2>
                                     <Grid container style={{ justifyContent: 'left' }}>
                                         <Grid item xs={6}>
                                             <AnimateButton>
                                                 <Button
+                                                    name={e.name}
                                                     onClick={handleButton}
                                                     disableElevation
                                                     fullWidth
@@ -230,6 +239,7 @@ export default function WineRecommendationDialog() {
                                         <Grid item xs={6}>
                                             <AnimateButton>
                                                 <Button
+                                                    name={e.id}
                                                     className={e.id}
                                                     id={e.id}
                                                     onClick={handleWordCloudButton}

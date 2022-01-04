@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { API_BASE_URL } from './config';
 
+export function wineOrderRequest(data) {
+    console.log(data);
+    return axios.post(`${API_BASE_URL}/api/admin/order/`, data);
+}
+
 const toBase64 = (file) =>
     new Promise((resolve, reject) => {
         const reader = new FileReader();
