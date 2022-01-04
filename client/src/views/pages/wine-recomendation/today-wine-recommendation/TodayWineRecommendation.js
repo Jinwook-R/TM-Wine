@@ -182,9 +182,10 @@ export default function TodayWineRecommendation() {
             alert('호수를 입력하세요');
             return false;
         }
+
         dispatch(
             wineOrderAction({
-                wineName: todayWine.name,
+                wineName: todayWine.name.split('(')[0].trim(),
                 roomNum: roomNumber
             })
         );
