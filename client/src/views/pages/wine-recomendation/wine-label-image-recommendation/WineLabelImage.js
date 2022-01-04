@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, CircularProgress, Divider, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-import CircularProgress from '@mui/material/CircularProgress';
-
 import AnimateButton from '../../../../ui-component/extended/AnimateButton';
 import { wineInfoByImageAction } from '../../../../store/reducers/wine';
 import WineRecommendationDialog from '../WineRecommendationDialog';
@@ -168,11 +166,6 @@ const WineLabelImage = () => {
             )}
             {openModal && <CameraModal />}
             <WineRecommendationDialog />
-            {loadWineInfoLoading && (
-                <Box sx={{ display: 'flex' }}>
-                    <CircularProgress />
-                </Box>
-            )}
         </>
     );
 };
