@@ -8,7 +8,10 @@ import {
     WINE_INFO_BY_IMAGE_FAILURE,
     EVERY_WINE_INFO_REQUEST,
     EVERY_WINE_INFO_SUCCESS,
-    EVERY_WINE_INFO_FAILURE
+    EVERY_WINE_INFO_FAILURE,
+    WINE_ORDER_BY_ROOM_NUMBER_REQUEST,
+    WINE_ORDER_BY_ROOM_NUMBER_SUCCESS,
+    WINE_ORDER_BY_ROOM_NUMBER_FAILURE
 } from '../actions/wine.js';
 
 export const initialState = {
@@ -18,8 +21,18 @@ export const initialState = {
     loadEveryWineInfoLoading: false,
     loadEveryWineInfoDone: false,
     loadEveryWineInfoError: false,
+    loadWineOrderLoading: false,
+    loadWineOrderDone: false,
+    loadWineOrderError: false,
     wineList: [],
     everyWineList: {}
+};
+
+export const wineOrderAction = (data) => {
+    return {
+        type: WINE_ORDER_BY_ROOM_NUMBER_REQUEST,
+        payload: data
+    };
 };
 
 export const everyWineInfoAction = () => {
@@ -117,6 +130,23 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loadWineInfoDone: false
+            };
+        case WINE_ORDER_BY_ROOM_NUMBER_REQUEST:
+            return {
+                ...state,
+                loadWineOrderLoading: true
+            };
+        case WINE_ORDER_BY_ROOM_NUMBER_SUCCESS:
+            return {
+                ...state,
+                loadWineOrderLoading: false,
+                loadWineOrderDone: true,
+                wineList: Object.values(payload) ?? []
+            };
+        case WINE_ORDER_BY_ROOM_NUMBER_FAILURE:
+            return {
+                ...state,
+                loadWineOrderError: false
             };
         default:
             return state;

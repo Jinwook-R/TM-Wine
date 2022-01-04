@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-// material-ui
 import { Box, Button, Divider, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-// project imports
+import CircularProgress from '@mui/material/CircularProgress';
+
 import AnimateButton from '../../../../ui-component/extended/AnimateButton';
 import { wineInfoByImageAction } from '../../../../store/reducers/wine';
 import WineRecommendationDialog from '../WineRecommendationDialog';
@@ -21,13 +21,12 @@ const styledImage = makeStyles({
         fontSize: 30,
         '& img': {
             position: 'absolute',
-            width: '100%',
             height: '100%',
+            minHeight: '500px',
             objectFit: 'cover',
-            top: 0,
-            left: 0,
-            bottom: 0,
-            margin: 'auto'
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)'
         }
     }
 });
@@ -54,7 +53,7 @@ const WineLabelImage = () => {
     const inputClasses = styledInput();
     const [fileList, setFileList] = useState('');
     const dispatch = useDispatch();
-    const isLoadWineInfoDone = useSelector((state) => state.wine.loadWineInfoDone);
+    const loadWineInfoLoading = useSelector((state) => state.wine.loadWineInfoLoading);
     const onLoadFile = (e) => {
         const file = e.target.files;
         setFileList(file);
@@ -68,8 +67,8 @@ const WineLabelImage = () => {
         if (!fileList || !fileList.length) return false;
 
         const imgEl = document.getElementById('img__box');
+        imgEl.removeChild(imgEl.childNodes[0]);
         const newImgTag = document.createElement('img');
-
         newImgTag.src = window.URL.createObjectURL(fileList[0]);
         imgEl.appendChild(newImgTag);
     };
@@ -83,6 +82,31 @@ const WineLabelImage = () => {
         dispatch(wineInfoByImageAction(fileList[0]));
     };
 
+    const WebcamCapture = () => {
+        const [deviceId, setDeviceId] = React.useState({});
+        const [devices, setDevices] = React.useState([]);
+
+        const handleDevices = React.useCallback(
+            (mediaDevices) => setDevices(mediaDevices.filter(({ kind }) => kind === 'videoinput')),
+            [setDevices]
+        );
+
+        useEffect(() => {
+            navigator.mediaDevices.enumerateDevices().then(handleDevices);
+        }, [handleDevices]);
+
+        return (
+            <>
+                {devices.map((device, key) => (
+                    <div>
+                        <Webcam audio={false} videoConstraints={{ deviceId: device.deviceId }} />
+                        {device.label || `Device ${key + 1}`}
+                    </div>
+                ))}
+            </>
+        );
+    };
+
     return (
         <>
             <Grid container direction="column" justifyContent="center" spacing={2}>
@@ -94,14 +118,24 @@ const WineLabelImage = () => {
                             </p>
                         </div>
                     </div>
-                    <AnimateButton>
-                        <form className="upload__input" style={{ width: 350, margin: '0 auto', display: 'block' }}>
-                            <label className={inputClasses.root} for="inputImage">
-                                파일 업로드
-                                <input type="file" id="inputImage" accept="img/*" onChange={onLoadFile} style={{ display: 'none' }} />
-                            </label>
-                        </form>
-                    </AnimateButton>
+                    <Grid container style={{ justifyContent: 'center' }}>
+                        <AnimateButton>
+                            <form className="upload__input" style={{ width: 350, marginRight: '5px', display: 'inline-block' }}>
+                                <label className={inputClasses.root} for="inputImage">
+                                    파일 업로드
+                                    <input type="file" id="inputImage" accept="img/*" onChange={onLoadFile} style={{ display: 'none' }} />
+                                </label>
+                            </form>
+                        </AnimateButton>
+                        <AnimateButton>
+                            <form className="upload__input" style={{ width: 350, display: 'inline-block' }}>
+                                <label className={inputClasses.root} htmlFor="inputImage">
+                                    사진 촬영
+                                    <input type="file" id="inputImage" accept="img/*" onChange={onLoadFile} style={{ display: 'none' }} />
+                                </label>
+                            </form>
+                        </AnimateButton>
+                    </Grid>
                 </Grid>
                 <Grid item xs={12}>
                     <Box
@@ -130,6 +164,11 @@ const WineLabelImage = () => {
                 </Grid>
             </Grid>
             <WineRecommendationDialog />
+            {loadWineInfoLoading && (
+                <Box sx={{ display: 'flex' }}>
+                    <CircularProgress />
+                </Box>
+            )}
         </>
     );
 };

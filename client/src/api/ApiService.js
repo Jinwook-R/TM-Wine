@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { API_BASE_URL } from './config';
+import { API_BASE_URL, API_BASE_URL2 } from './config';
+
+export function wineOrderRequest(data) {
+    console.log(data);
+    return axios.post(`${API_BASE_URL2}/api/admin/order/`, data);
+}
 
 const toBase64 = (file) =>
     new Promise((resolve, reject) => {
