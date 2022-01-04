@@ -189,6 +189,7 @@ export default function TodayWineRecommendation() {
                 roomNum: roomNumber
             })
         );
+        alert(`${roomNumber}호 주문이 완료되었습니다.`);
         setRoomNumber(0);
         setOpenModal(false);
     };

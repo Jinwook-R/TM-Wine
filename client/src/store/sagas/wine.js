@@ -21,7 +21,6 @@ function wineInfoByKeywordRequestAPI(data) {
 function* orderWine(data) {
     try {
         const res = yield call(wineOrderRequestAPI, data.payload);
-        alert(`${data.roomNum}호 주문이 완료되었습니다.`);
         yield put({
             type: actions.WINE_ORDER_BY_ROOM_NUMBER_SUCCESS
         });
