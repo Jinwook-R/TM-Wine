@@ -6,7 +6,6 @@ import WineLabelImage from './WineLabelImage';
 import WineWrapper from '../WineWrapper';
 import WIneCardWrapper from '../WIneCardWrapper';
 // ================================|| WineLabelImageRecommendation ||================================ //
-
 const WineLabelImageRecommendation = () => {
     return (
         <WineWrapper>

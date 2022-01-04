@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 
 // material-ui
 import { styled } from '@mui/material/styles';
@@ -20,12 +19,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     borderRadius: 10
 }));
 
-const WineKeywordRecommendationButton = ({ isLoading }) => {
-    const [timeValue, setTimeValue] = useState(false);
-    const handleChangeTime = (event, newValue) => {
-        setTimeValue(newValue);
-    };
-
+const WineKeywordRecommendationButton = () => {
     return (
         <>
             <CardWrapper border={false} content={false}>

@@ -1,15 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { Box, Button, CircularProgress, Divider, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-
 import AnimateButton from '../../../../ui-component/extended/AnimateButton';
 import { wineInfoByImageAction } from '../../../../store/reducers/wine';
 import WineRecommendationDialog from '../WineRecommendationDialog';
 import CameraModal from '../../../../ui-component/CameraModal';
-
-// ============================|| WineLabelImage ||============================ //
 
 const styledImage = makeStyles({
     root: {
@@ -59,17 +55,17 @@ const WineLabelImage = () => {
         setFileList(file);
     };
 
-    const onCameraDialog = (e) => {
-        setOpenModal(true);
-    };
+    useEffect(() => {
+        preview();
+    }, [fileList]);
 
     useEffect(() => {
         preview();
     });
 
     const preview = () => {
+        console.log(fileList.length);
         if (!fileList || !fileList.length) return false;
-
         const imgEl = document.getElementById('img__box');
         imgEl.removeChild(imgEl.childNodes[0]);
         const newImgTag = document.createElement('img');
@@ -86,29 +82,8 @@ const WineLabelImage = () => {
         dispatch(wineInfoByImageAction(fileList[0]));
     };
 
-    const WebcamCapture = () => {
-        const [deviceId, setDeviceId] = React.useState({});
-        const [devices, setDevices] = React.useState([]);
-
-        const handleDevices = React.useCallback(
-            (mediaDevices) => setDevices(mediaDevices.filter(({ kind }) => kind === 'videoinput')),
-            [setDevices]
-        );
-
-        useEffect(() => {
-            navigator.mediaDevices.enumerateDevices().then(handleDevices);
-        }, [handleDevices]);
-
-        return (
-            <>
-                {devices.map((device, key) => (
-                    <div>
-                        <Webcam audio={false} videoConstraints={{ deviceId: device.deviceId }} />
-                        {device.label || `Device ${key + 1}`}
-                    </div>
-                ))}
-            </>
-        );
+    const a = () => {
+        setOpenModal(true);
     };
 
     return (
@@ -130,6 +105,14 @@ const WineLabelImage = () => {
                                     <input type="file" id="inputImage" accept="img/*" onChange={onLoadFile} style={{ display: 'none' }} />
                                 </label>
                             </form>
+                        </AnimateButton>
+                        <AnimateButton>
+                            <span className="" style={{ width: 350, marginRight: '5px', display: 'inline-block' }}>
+                                <label className={inputClasses.root} for="a">
+                                    사진 촬영
+                                    <input id="a" style={{ display: 'none' }} onClick={a} />
+                                </label>
+                            </span>
                         </AnimateButton>
                     </Grid>
                 </Grid>
@@ -164,7 +147,7 @@ const WineLabelImage = () => {
                     <CircularProgress />
                 </Box>
             )}
-            {openModal && <CameraModal />}
+            {openModal && <CameraModal setFileList={setFileList} preview={preview} setOpenModal={setOpenModal} />}
             <WineRecommendationDialog />
         </>
     );
