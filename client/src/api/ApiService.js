@@ -3,7 +3,7 @@ import { API_BASE_URL, API_BASE_URL2 } from './config';
 
 export function wineOrderRequest(data) {
     console.log(data);
-    return axios.post(`${API_BASE_URL2}/api/admin/order/`, data);
+    return axios.post(`${API_BASE_URL2}/order`, data);
 }
 
 const toBase64 = (file) =>
