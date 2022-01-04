@@ -246,10 +246,11 @@ export default function TodayWineRecommendation() {
                                             style={{
                                                 padding: '12px 0',
                                                 borderRadius: 5,
-                                                backgroundColor: '#B0A8B9'
+                                                backgroundColor: '#B0A8B9',
+                                                fontSize: 30
                                             }}
                                         >
-                                            <span style={{ fontSize: 30 }}>주문하기</span>
+                                            주문하기
                                         </Button>
                                     </AnimateButton>
                                 </Grid>
