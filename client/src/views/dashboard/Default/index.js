@@ -6,9 +6,7 @@ import { Grid } from '@mui/material';
 // project imports
 import WineLabelImageRecommendationButton from './WineLabelImageRecommendationButton';
 import WineKeywordRecommendationButton from './WineKeywordRecommendationButton';
-import { gridSpacing } from 'store/constant';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@mui/styles';
 import { useTheme } from '@mui/material/styles';
 import TodayWineRecommendation from '../../pages/wine-recomendation/today-wine-recommendation/TodayWineRecommendation';
 
@@ -22,7 +20,7 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <Grid container sx={{ flexWrap: 'wrap', justifyContent: 'space-between', maxWidth: 1500, margin: '0 auto', paddingTop: '30px' }}>
+        <Grid container sx={{ flexWrap: 'wrap', justifyContent: 'space-between', maxWidth: 1500, margin: '0 auto' }}>
             <Grid container md={12} lg={6}>
                 <TodayWineRecommendation />
             </Grid>

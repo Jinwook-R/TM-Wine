@@ -23,7 +23,7 @@ const MainLayout = () => {
                 sx={{
                     backgroundImage: `url(${process.env.PUBLIC_URL}/wine6.jpeg)`,
                     backgroundPosition: 'center',
-                    paddingTop: '20%',
+                    paddingTop: '16%',
                     backgroundSize: 'cover',
                     position: 'relative',
                     '::before': {
@@ -62,7 +62,7 @@ const MainLayout = () => {
                         bottom: 0,
                         transform: 'translate(-50%,-280%)',
                         textTransform: 'uppercase',
-                        fontSize: '2.1vw',
+                        fontSize: '2vw',
                         letterSpacing: '0.4em',
                         textIndent: '0.4em',
                         whiteSpace: 'nowrap',

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Box, Button, Divider, Grid } from '@mui/material';
+import { Box, Button, CircularProgress, Divider, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 import CircularProgress from '@mui/material/CircularProgress';
@@ -9,6 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import AnimateButton from '../../../../ui-component/extended/AnimateButton';
 import { wineInfoByImageAction } from '../../../../store/reducers/wine';
 import WineRecommendationDialog from '../WineRecommendationDialog';
+import CameraModal from '../../../../ui-component/CameraModal';
 
 // ============================|| WineLabelImage ||============================ //
 
@@ -16,7 +17,7 @@ const styledImage = makeStyles({
     root: {
         position: 'relative',
         display: 'block',
-        height: '50vh',
+        height: '80vh',
         border: '1px #fff solid',
         fontSize: 30,
         '& img': {
@@ -52,11 +53,16 @@ const WineLabelImage = () => {
     const classes = styledImage();
     const inputClasses = styledInput();
     const [fileList, setFileList] = useState('');
+    const [openModal, setOpenModal] = useState(false);
     const dispatch = useDispatch();
     const loadWineInfoLoading = useSelector((state) => state.wine.loadWineInfoLoading);
     const onLoadFile = (e) => {
         const file = e.target.files;
         setFileList(file);
+    };
+
+    const onCameraDialog = (e) => {
+        setOpenModal(true);
     };
 
     useEffect(() => {
@@ -127,14 +133,6 @@ const WineLabelImage = () => {
                                 </label>
                             </form>
                         </AnimateButton>
-                        <AnimateButton>
-                            <form className="upload__input" style={{ width: 350, display: 'inline-block' }}>
-                                <label className={inputClasses.root} htmlFor="inputImage">
-                                    사진 촬영
-                                    <input type="file" id="inputImage" accept="img/*" onChange={onLoadFile} style={{ display: 'none' }} />
-                                </label>
-                            </form>
-                        </AnimateButton>
                     </Grid>
                 </Grid>
                 <Grid item xs={12}>
@@ -163,6 +161,12 @@ const WineLabelImage = () => {
                     </form>
                 </Grid>
             </Grid>
+            {loadWineInfoLoading && (
+                <Box sx={{ display: 'flex', justifyContent: 'center', transform: 'translate(0%, -1500%)' }}>
+                    <CircularProgress>로딩중입니다</CircularProgress>
+                </Box>
+            )}
+            {openModal && <CameraModal />}
             <WineRecommendationDialog />
             {loadWineInfoLoading && (
                 <Box sx={{ display: 'flex' }}>
