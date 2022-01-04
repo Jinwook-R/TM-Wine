@@ -140,7 +140,7 @@ export default function WineRecommendationDialog() {
     const wineList = useSelector((state) => state.wine.wineList);
     const labelName = useSelector((state) => state.wine.labelName);
     const [openModal, setOpenModal] = useState(false);
-    const [roomNumber, setRoomNumber] = useState('');
+    const [roomNumber, setRoomNumber] = useState(0);
     const [wineName, setWineName] = useState('');
     const [keywordModal, setKeywordModal] = useState(false);
     const wordCloud = styledWordCloud();
@@ -153,14 +153,14 @@ export default function WineRecommendationDialog() {
 
     const handleButton = (e) => {
         e.stopPropagation();
-        setWineName(e.target.name);
+        setWineName(e.target.name.split('(')[0].trim());
         setOpenModal(true);
     };
 
     const handleDialogClose = () => {
         setOpenModal(false);
         setKeywordModal(false);
-        setRoomNumber('');
+        setRoomNumber(0);
     };
 
     const handleOrderButton = (e) => {
@@ -175,12 +175,12 @@ export default function WineRecommendationDialog() {
                 roomNum: roomNumber
             })
         );
-        setRoomNumber('');
+        setRoomNumber(0);
         setOpenModal(false);
     };
 
     const handleRoomNumber = (e) => {
-        setRoomNumber(e.target.value);
+        setRoomNumber(Number(e.target.value));
     };
 
     const [keywordCloudWineId, setKeywordCloudWineId] = useState('');

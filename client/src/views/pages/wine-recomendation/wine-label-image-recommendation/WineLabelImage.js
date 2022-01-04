@@ -161,7 +161,7 @@ const WineLabelImage = () => {
             </Grid>
             {loadWineInfoLoading && (
                 <Box sx={{ display: 'flex', justifyContent: 'center', transform: 'translate(0%, -1500%)' }}>
-                    <CircularProgress>로딩중입니다</CircularProgress>
+                    <CircularProgress />
                 </Box>
             )}
             {openModal && <CameraModal />}
