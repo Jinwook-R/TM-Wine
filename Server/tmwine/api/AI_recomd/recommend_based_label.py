@@ -101,7 +101,7 @@ def Wine_recomender(list) :
     ## list wine의 예측 모델
     prediction = PredictCluster(list)
     ret = prediction
-    print(prediction)
+
 
     #f = open("name.txt", "r")
     #ret = f.read()
