@@ -13,7 +13,12 @@ const WineKeywordRecommendation = () => {
                 <WIneCardWrapper>
                     <Grid container spacing={1} alignItems="center" justifyContent="center">
                         <Grid item xs={12}>
-                            <Typography color="#845EC2" gutterBottom style={{ fontSize: 50, textAlign: 'center' }}>
+                            <Typography
+                                fontFamily={'BlackhanSans'}
+                                color="#845EC2"
+                                gutterBottom
+                                style={{ fontSize: 50, textAlign: 'center' }}
+                            >
                                 키워드로 와인 추천 받기
                             </Typography>
                         </Grid>

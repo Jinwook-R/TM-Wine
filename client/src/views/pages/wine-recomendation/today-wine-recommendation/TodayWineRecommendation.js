@@ -203,7 +203,9 @@ export default function TodayWineRecommendation() {
             <Grid item xs={12}>
                 <div className="custom__img" s>
                     <p>
-                        <h3 style={{ color: '#7485B5', textAlign: 'center', fontSize: 30 }}>오늘의 추천 와인</h3>
+                        <h3 style={{ fontFamily: 'BlackhanSans', color: '#7485B5', textAlign: 'center', fontSize: 30 }}>
+                            오늘의 추천 와인
+                        </h3>
                     </p>
                     <AnimateButton>
                         <Box className={classes.root} id="img__box" onClick={handleClick}>
@@ -218,7 +220,7 @@ export default function TodayWineRecommendation() {
                     id="customized-dialog-title"
                     onClose={handleClose}
                 >
-                    <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 50 }}>오늘의 추천 와인</h3>
+                    <h3 style={{ fontFamily: 'BlackhanSans', color: '#E3E0F3', textAlign: 'center', fontSize: 50 }}>오늘의 추천 와인</h3>
                 </BootstrapDialogTitle>
                 <div style={{ padding: 30 }}>
                     <Grid container className="custom__img">
@@ -227,15 +229,15 @@ export default function TodayWineRecommendation() {
                                 {todayWine && <img src={process.env.PUBLIC_URL + `/wines/wine${todayWine.id}-1.png`} alt="" />}
                             </div>
                         </Grid>
-                        <Grid item xs={7} style={{ marginTop: 20, paddingLeft: 10 }}>
-                            <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>{todayWine?.name?.split('(')[0]}</h2>
-                            <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>가격: {todayWine?.price}</h2>
-                            <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>원산지: {todayWine?.origin}</h2>
-                            <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>알콜 도수: {todayWine?.alcoholicity}%</h2>
-                            <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>당도: {todayWine?.sweetness}</h2>
-                            <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>산도: {todayWine?.acidity}</h2>
-                            <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>바디감: {todayWine?.body}</h2>
-                            <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>타닌감: {todayWine?.tannin}</h2>
+                        <Grid item xs={7} style={{ color: '#7485B5', fontFamily: 'BlackhanSans', marginTop: 20, paddingLeft: 10 }}>
+                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>{todayWine?.name?.split('(')[0]}</h2>
+                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>가격: {todayWine?.price}</h2>
+                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>원산지: {todayWine?.origin}</h2>
+                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>알콜 도수: {todayWine?.alcoholicity}%</h2>
+                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>당도: {todayWine?.sweetness}</h2>
+                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>산도: {todayWine?.acidity}</h2>
+                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>바디감: {todayWine?.body}</h2>
+                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>타닌감: {todayWine?.tannin}</h2>
                             <Grid container style={{ justifyContent: 'left' }}>
                                 <Grid item xs={6}>
                                     <AnimateButton>
@@ -249,7 +251,8 @@ export default function TodayWineRecommendation() {
                                                 padding: '12px 0',
                                                 borderRadius: 5,
                                                 backgroundColor: '#B0A8B9',
-                                                fontSize: 30
+                                                fontSize: 30,
+                                                fontFamily: 'BlackhanSans'
                                             }}
                                         >
                                             주문하기
@@ -268,7 +271,8 @@ export default function TodayWineRecommendation() {
                                                 marginLeft: 10,
                                                 padding: '12px 0',
                                                 borderRadius: 5,
-                                                backgroundColor: '#B0A8B9'
+                                                backgroundColor: '#B0A8B9',
+                                                fontFamily: 'BlackhanSans'
                                             }}
                                         >
                                             <span style={{ fontSize: 30 }}>와인 관련 키워드 확인</span>
@@ -288,11 +292,17 @@ export default function TodayWineRecommendation() {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h3" component="h2">
+                    <Typography style={{ fontFamily: 'BlackhanSans' }} id="modal-modal-title" variant="h3" component="h2">
                         투숙중인 호수를 입력하세요
                     </Typography>
                     <TextField
-                        sx={{ display: 'inline-block', fontWeight: 'bold', paddingTop: '20px', textAlign: 'center' }}
+                        sx={{
+                            display: 'inline-block',
+                            fontWeight: 'bold',
+                            paddingTop: '20px',
+                            textAlign: 'center',
+                            fontFamily: 'BlackhanSans'
+                        }}
                         id="standard-basic"
                         variant="standard"
                         onChange={handleRoomNumber}
@@ -310,10 +320,11 @@ export default function TodayWineRecommendation() {
                             width: 100,
                             padding: '5px 0',
                             borderRadius: 5,
-                            backgroundColor: '#B0A8B9'
+                            backgroundColor: '#B0A8B9',
+                            fontFamily: 'BlackhanSans'
                         }}
                     >
-                        <span style={{ fontSize: 18 }}>완료</span>
+                        <span style={{ fontSize: 18, fontFamily: 'BlackhanSans' }}>완료</span>
                     </Button>
                 </Box>
             </Modal>

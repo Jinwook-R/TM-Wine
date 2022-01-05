@@ -20,7 +20,10 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <Grid container sx={{ flexWrap: 'wrap', justifyContent: 'space-between', maxWidth: 1500, margin: '0 auto' }}>
+        <Grid
+            container
+            sx={{ fontFamily: 'BlackhanSans', flexWrap: 'wrap', justifyContent: 'space-between', maxWidth: 1500, margin: '0 auto' }}
+        >
             <Grid container md={12} lg={6}>
                 <TodayWineRecommendation />
             </Grid>

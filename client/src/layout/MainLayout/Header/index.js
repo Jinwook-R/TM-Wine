@@ -13,6 +13,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                     width: 200,
                     height: 50,
                     display: 'flex',
+                    fontFamily: 'BlackhanSans',
                     [theme.breakpoints.down('md')]: {
                         width: 'auto'
                     }
