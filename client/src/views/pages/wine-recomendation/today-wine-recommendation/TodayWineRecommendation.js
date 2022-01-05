@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { Box, Button, Divider, Grid, Modal, TextField, Typography, useMediaQuery } from '@mui/material';
+import { Box, Button, Divider, Grid, Modal, Rating, TextField, Typography, useMediaQuery } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { everyWineInfoAction, wineOrderAction } from '../../../../store/reducers/wine';
 import AnimateButton from '../../../../ui-component/extended/AnimateButton';
@@ -232,12 +232,25 @@ export default function TodayWineRecommendation() {
                         <Grid item xs={7} style={{ color: '#7485B5', fontFamily: 'BlackhanSans', marginTop: 20, paddingLeft: 10 }}>
                             <h2 style={{ textAlign: 'left', fontSize: 25 }}>{todayWine?.name?.split('(')[0]}</h2>
                             <h2 style={{ textAlign: 'left', fontSize: 25 }}>가격: {todayWine?.price?.toLocaleString()}</h2>
+                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>종류: {todayWine?.category} 와인</h2>
                             <h2 style={{ textAlign: 'left', fontSize: 25 }}>원산지: {todayWine?.origin}</h2>
                             <h2 style={{ textAlign: 'left', fontSize: 25 }}>알콜 도수: {todayWine?.alcoholicity}%</h2>
-                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>당도: {todayWine?.sweetness}</h2>
-                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>산도: {todayWine?.acidity}</h2>
-                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>바디감: {todayWine?.body}</h2>
-                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>타닌감: {todayWine?.tannin}</h2>
+                            <Grid container>
+                                <h2 style={{ textAlign: 'left', fontSize: 25 }}>당도:</h2>
+                                <Rating name="read-only" value={todayWine?.sweetness} readOnly />
+                            </Grid>
+                            <Grid container>
+                                <h2 style={{ textAlign: 'left', fontSize: 25 }}>산도:</h2>
+                                <Rating name="read-only" value={todayWine?.acidity} readOnly />
+                            </Grid>
+                            <Grid container>
+                                <h2 style={{ textAlign: 'left', fontSize: 25 }}>바디감:</h2>
+                                <Rating name="read-only" value={todayWine?.body} readOnly />
+                            </Grid>
+                            <Grid container>
+                                <h2 style={{ textAlign: 'left', fontSize: 25 }}>타닌감:</h2>
+                                <Rating name="read-only" value={todayWine?.tannin} readOnly />
+                            </Grid>
                             <Grid container style={{ justifyContent: 'left' }}>
                                 <Grid item xs={6}>
                                     <AnimateButton>

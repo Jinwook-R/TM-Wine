@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoadWineInfoDoneChangeAction, wineLabelNameChangeAction, wineOrderAction } from '../../../store/reducers/wine';
-import { Box, Button, Divider, Grid, Modal, TextField, Typography } from '@mui/material';
+import { Box, Button, Divider, Grid, Modal, Rating, TextField, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import AnimateButton from '../../../ui-component/extended/AnimateButton';
 
@@ -199,10 +199,16 @@ export default function WineRecommendationDialog() {
                     onClose={handleClose}
                 >
                     {labelName && (
-                        <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35, fontFamily: 'BlackhanSans' }}>{labelName}</h3>
+                        <>
+                            <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35, fontFamily: 'BlackhanSans' }}>
+                                "{labelName}" 와인과 맛이 비슷한 추천 와인
+                            </h3>
+                        </>
                     )}
                     {labelName === '' && <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35 }}> </h3>}
-                    <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35, fontFamily: 'BlackhanSans' }}>추천 와인</h3>
+                    {labelName === '' && (
+                        <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35, fontFamily: 'BlackhanSans' }}>추천 와인</h3>
+                    )}
                 </BootstrapDialogTitle>
                 <div style={{ padding: 30 }}>
                     {wineList.map((e) => (
@@ -219,11 +225,24 @@ export default function WineRecommendationDialog() {
                                         가격: {e?.price?.toLocaleString()}
                                     </h2>
                                     <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>원산지: {e?.origin}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>종류: {e?.category} 와인</h2>
                                     <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>알콜 도수: {e?.alcoholicity}%</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>당도: {e?.sweetness}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>산도: {e?.acidity}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>바디감: {e?.body}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>타닌감: {e?.tannin}</h2>
+                                    <Grid container>
+                                        <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>당도:</h2>
+                                        <Rating name="read-only" value={e?.sweetness} readOnly />
+                                    </Grid>
+                                    <Grid container>
+                                        <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>산도:</h2>
+                                        <Rating name="read-only" value={e?.acidity} readOnly />
+                                    </Grid>
+                                    <Grid container>
+                                        <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>바디감:</h2>
+                                        <Rating name="read-only" value={e?.body} readOnly />
+                                    </Grid>
+                                    <Grid container>
+                                        <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>타닌감:</h2>
+                                        <Rating name="read-only" value={e?.tannin} readOnly />
+                                    </Grid>
                                     <Grid container style={{ justifyContent: 'left' }}>
                                         <Grid item xs={6}>
                                             <AnimateButton>
