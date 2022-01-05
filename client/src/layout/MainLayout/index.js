@@ -2,7 +2,7 @@ import { Link, Outlet } from 'react-router-dom';
 
 // material-ui
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Toolbar, Typography, useMediaQuery } from '@mui/material';
+import { Box, Toolbar, Typography } from '@mui/material';
 
 // styles
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
@@ -51,7 +51,7 @@ const MainLayout = () => {
                         color: '#8083FF'
                     }}
                 >
-                    <Link to={'/free'} style={{ textDecoration: 'none' }}>
+                    <Link to={'/free'} style={{ fontFamily: 'BlackhanSans', textDecoration: 'none' }}>
                         TM-WINE
                     </Link>
                 </Typography>
@@ -66,7 +66,8 @@ const MainLayout = () => {
                         letterSpacing: '0.4em',
                         textIndent: '0.4em',
                         whiteSpace: 'nowrap',
-                        color: 'black'
+                        color: 'black',
+                        fontFamily: 'BlackhanSans'
                     }}
                 >
                     와인 추천 기반 주문 서비스

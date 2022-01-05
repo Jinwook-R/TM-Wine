@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Button, CircularProgress, Divider, Grid } from '@mui/material';
+import { Box, Button, CircularProgress, Divider, Grid, Modal } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import AnimateButton from '../../../../ui-component/extended/AnimateButton';
 import { wineInfoByImageAction } from '../../../../store/reducers/wine';
@@ -39,7 +39,8 @@ const styledInput = makeStyles({
         border: 'none',
         color: 'white',
         textDecoration: 'none',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        fontFamily: 'BlackhanSans'
     }
 });
 
@@ -76,7 +77,7 @@ const WineLabelImage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!fileList || !fileList.length) {
-            alert('파일 업로드를 해주세요');
+            alert('이미지를 업로드 해주세요');
             return false;
         }
         dispatch(wineInfoByImageAction(fileList[0]));
@@ -93,7 +94,7 @@ const WineLabelImage = () => {
                     <div className="custom__img">
                         <div className={classes.root} id="img__box">
                             <p style={{ textAlign: 'center', margin: '50px' }}>
-                                <h3 style={{ color: '#B0A8B9' }}>와인 라벨 사진을 업로드 하세요:)</h3>
+                                <h3 style={{ fontFamily: 'BlackhanSans', color: '#B0A8B9' }}>와인 라벨 사진을 업로드 하세요:)</h3>
                             </p>
                         </div>
                     </div>
@@ -135,7 +136,7 @@ const WineLabelImage = () => {
                                     variant="contained"
                                     style={{ width: 350, padding: '12px 0', borderRadius: 5, backgroundColor: '#B0A8B9' }}
                                 >
-                                    <span style={{ fontSize: 30 }}>추천받기</span>
+                                    <span style={{ fontFamily: 'BlackhanSans', fontSize: 30 }}>추천받기</span>
                                 </Button>
                             </AnimateButton>
                         </Box>
@@ -143,9 +144,11 @@ const WineLabelImage = () => {
                 </Grid>
             </Grid>
             {loadWineInfoLoading && (
-                <Box sx={{ display: 'flex', justifyContent: 'center', transform: 'translate(0%, -1500%)' }}>
-                    <CircularProgress />
-                </Box>
+                <Modal open={true} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '200px' }}>
+                        <CircularProgress />
+                    </div>
+                </Modal>
             )}
             {openModal && <CameraModal setFileList={setFileList} preview={preview} setOpenModal={setOpenModal} />}
             <WineRecommendationDialog />
