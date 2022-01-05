@@ -215,7 +215,9 @@ export default function WineRecommendationDialog() {
                                 </Grid>
                                 <Grid item xs={7} style={{ fontFamily: 'BlackhanSans', marginTop: 20, paddingLeft: 10 }}>
                                     <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>{e?.name?.split('(')[0]}</h2>
-                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>가격: {e?.price}</h2>
+                                    <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>
+                                        가격: {e?.price?.toLocaleString()}
+                                    </h2>
                                     <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>원산지: {e?.origin}</h2>
                                     <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>알콜 도수: {e?.alcoholicity}%</h2>
                                     <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>당도: {e?.sweetness}</h2>

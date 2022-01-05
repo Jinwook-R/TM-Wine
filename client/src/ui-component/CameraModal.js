@@ -65,7 +65,7 @@ export default function CameraModal({ setFileList, preview, setOpenModal }) {
             <Modal open={true} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <>
                     <Webcam
-                        style={{ display: 'block', transform: 'translate(100%, 20%)' }}
+                        style={{ display: 'block', transform: 'translate(75%, 20%)' }}
                         audio={false}
                         height="inherit"
                         ref={webcamRef}
@@ -73,7 +73,7 @@ export default function CameraModal({ setFileList, preview, setOpenModal }) {
                         width={500}
                     />
                     <Button
-                        style={{ backgroundColor: '#8195CF', color: 'white', display: 'block', transform: 'translate(700%, 450%)' }}
+                        style={{ backgroundColor: '#8195CF', color: 'white', display: 'block', transform: 'translate(490%, 450%)' }}
                         onClick={capture}
                     >
                         Capture photo

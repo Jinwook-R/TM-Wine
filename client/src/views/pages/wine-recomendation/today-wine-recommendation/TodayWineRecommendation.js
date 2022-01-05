@@ -231,7 +231,7 @@ export default function TodayWineRecommendation() {
                         </Grid>
                         <Grid item xs={7} style={{ color: '#7485B5', fontFamily: 'BlackhanSans', marginTop: 20, paddingLeft: 10 }}>
                             <h2 style={{ textAlign: 'left', fontSize: 25 }}>{todayWine?.name?.split('(')[0]}</h2>
-                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>가격: {todayWine?.price}</h2>
+                            <h2 style={{ textAlign: 'left', fontSize: 25 }}>가격: {todayWine?.price?.toLocaleString()}</h2>
                             <h2 style={{ textAlign: 'left', fontSize: 25 }}>원산지: {todayWine?.origin}</h2>
                             <h2 style={{ textAlign: 'left', fontSize: 25 }}>알콜 도수: {todayWine?.alcoholicity}%</h2>
                             <h2 style={{ textAlign: 'left', fontSize: 25 }}>당도: {todayWine?.sweetness}</h2>
