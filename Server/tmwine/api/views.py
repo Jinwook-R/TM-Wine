@@ -28,12 +28,14 @@ def labelRecommendation(request):
     label_name = Labeldetection.LabelDetector(PATH + "/img.png")
 
     if(label_name=='None') :
+       print(f"인식이 되지 않았습니다. 다시한번 사진을 찍어주세요.")
        return HttpResponse("Nothing detected")
 
-    conn = pymysql.connect(host="localhost", user="root", password="1234", db="Tmwine")
+    conn = pymysql.connect(host="localhost", user="mina", password="1234", db="FINAL_test_DB")
     db_conn = conn.cursor()
     wine_info=[]
 
+    print("와인 정보를 DB상에서 가져옵니다.\n")
     ## find wine info
     sql_cmd = 'SELECT 품종 FROM Wine where 품명영문 = %s'
     db_conn.execute(sql_cmd, (label_name))
@@ -55,7 +57,9 @@ def labelRecommendation(request):
     db_conn.execute(sql_cmd, (label_name))
     wine_info.append(db_conn.fetchall()[0][0])
 
+    print("군집화를 시작합니다.\n")
     clustered_num = recommend_based_label.Wine_recomender(wine_info)
+    print("인식된 와인 %s에 대한 군집 번호는 %d 입니다.\n" % (label_name, clustered_num))
 
     ## find similar wine's PK
     sql_cmd = 'SELECT 와인번호 FROM HotelWine where 군집 = %s ORDER BY 평점 DESC LIMIT 2'

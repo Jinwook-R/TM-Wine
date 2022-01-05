@@ -162,11 +162,14 @@ def run(weights='bettermodel.pt',  # model.pt path(s)
                         c = int(cls)  # integer class
                         label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
                         annotator.box_label(xyxy, label, color=colors(c, True))
+                        LOGGER.info(f"인식된 라벨은 {colorstr('bold', names[c])} 입니다")
+
+                        #LOGGER.info(f'{names[c]} 에 대한 군집화 )')
                         if save_crop:
                             save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
 
             # Print time (inference-only)
-            LOGGER.info(f'{s}Done----. ({t3 - t2:.3f}s)')
+            # LOGGER.info(f'{s}Done----. ({t3 - t2:.3f}s)')
 
             # mina
             f = open("name.txt", "w")
@@ -199,10 +202,10 @@ def run(weights='bettermodel.pt',  # model.pt path(s)
 
     # Print results
     t = tuple(x / seen * 1E3 for x in dt)  # speeds per image
-    LOGGER.info(f'Speed: %.1fms pre-process, %.1fms inference, %.1fms NMS per image at shape {(1, 3, *imgsz)}' % t)
+    #LOGGER.info(f'Speed: %.1fms pre-process, %.1fms inference, %.1fms NMS per image at shape {(1, 3, *imgsz)}' % t)
     if save_txt or save_img:
         s = f"\n{len(list(save_dir.glob('labels/*.txt')))} labels saved to {save_dir / 'labels'}" if save_txt else ''
-        LOGGER.info(f"Results saved to {colorstr('bold', save_dir)}{s}")
+
     if update:
         strip_optimizer(weights)  # update model (to fix SourceChangeWarning)
 
