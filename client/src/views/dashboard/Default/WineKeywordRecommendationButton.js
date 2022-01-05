@@ -16,7 +16,8 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     color: '#fff',
     overflow: 'hidden',
     position: 'relative',
-    borderRadius: 10
+    borderRadius: 10,
+    fontFamily: 'BlackhanSans'
 }));
 
 const WineKeywordRecommendationButton = () => {
@@ -31,7 +32,8 @@ const WineKeywordRecommendationButton = () => {
                                     sx={{
                                         fontSize: '2.125rem',
                                         textAlign: 'center',
-                                        lineHeight: '95px'
+                                        lineHeight: '95px',
+                                        fontFamily: 'BlackhanSans'
                                     }}
                                 >
                                     키워드 기반 와인 추천

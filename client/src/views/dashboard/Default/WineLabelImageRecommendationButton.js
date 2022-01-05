@@ -15,7 +15,8 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     backgroundColor: '#B39CD0',
     color: '#fff',
     position: 'relative',
-    borderRadius: 10
+    borderRadius: 10,
+    fontFamily: 'BlackhanSans'
 }));
 
 const WineLabelImageRecommendationButton = ({ isLoading }) => {
@@ -35,7 +36,8 @@ const WineLabelImageRecommendationButton = ({ isLoading }) => {
                         sx={{
                             fontSize: '2.125rem',
                             textAlign: 'center',
-                            lineHeight: '95px'
+                            lineHeight: '95px',
+                            fontFamily: 'BlackhanSans'
                         }}
                     >
                         라벨 기반 와인 추천

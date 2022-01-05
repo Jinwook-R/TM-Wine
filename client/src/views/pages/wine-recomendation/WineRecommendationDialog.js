@@ -198,9 +198,11 @@ export default function WineRecommendationDialog() {
                     id="customized-dialog-title"
                     onClose={handleClose}
                 >
-                    {labelName && <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35 }}>{labelName}</h3>}
+                    {labelName && (
+                        <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35, fontFamily: 'BlackhanSans' }}>{labelName}</h3>
+                    )}
                     {labelName === '' && <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35 }}> </h3>}
-                    <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35 }}>추천 와인</h3>
+                    <h3 style={{ color: '#E3E0F3', textAlign: 'center', fontSize: 35, fontFamily: 'BlackhanSans' }}>추천 와인</h3>
                 </BootstrapDialogTitle>
                 <div style={{ padding: 30 }}>
                     {wineList.map((e) => (
@@ -211,7 +213,7 @@ export default function WineRecommendationDialog() {
                                         <img src={process.env.PUBLIC_URL + `/wines/wine${e.id}-1.png`} alt="" />
                                     </div>
                                 </Grid>
-                                <Grid item xs={7} style={{ marginTop: 20, paddingLeft: 10 }}>
+                                <Grid item xs={7} style={{ fontFamily: 'BlackhanSans', marginTop: 20, paddingLeft: 10 }}>
                                     <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>{e?.name?.split('(')[0]}</h2>
                                     <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>가격: {e?.price}</h2>
                                     <h2 style={{ color: '#7485B5', textAlign: 'left', fontSize: 25 }}>원산지: {e?.origin}</h2>
@@ -235,7 +237,8 @@ export default function WineRecommendationDialog() {
                                                         padding: '12px 0',
                                                         borderRadius: 5,
                                                         backgroundColor: '#B0A8B9',
-                                                        fontSize: 30
+                                                        fontSize: 30,
+                                                        fontFamily: 'BlackhanSans'
                                                     }}
                                                 >
                                                     주문하기
@@ -261,7 +264,7 @@ export default function WineRecommendationDialog() {
                                                         backgroundColor: '#B0A8B9'
                                                     }}
                                                 >
-                                                    <span style={{ fontSize: 30 }}>와인 관련 키워드 확인</span>
+                                                    <span style={{ fontFamily: 'BlackhanSans', fontSize: 30 }}>와인 관련 키워드 확인</span>
                                                 </Button>
                                             </AnimateButton>
                                         </Grid>
@@ -280,7 +283,7 @@ export default function WineRecommendationDialog() {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h3" component="h2">
+                    <Typography style={{ fontFamily: 'BlackhanSans' }} id="modal-modal-title" variant="h3" component="h2">
                         투숙중인 호수를 입력하세요
                     </Typography>
                     <TextField
@@ -305,7 +308,7 @@ export default function WineRecommendationDialog() {
                             backgroundColor: '#B0A8B9'
                         }}
                     >
-                        <span style={{ fontSize: 18 }}>완료</span>
+                        <span style={{ fontFamily: 'BlackhanSans', fontSize: 18 }}>완료</span>
                     </Button>
                 </Box>
             </Modal>

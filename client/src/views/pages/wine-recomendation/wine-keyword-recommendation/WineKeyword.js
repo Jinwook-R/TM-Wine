@@ -76,16 +76,16 @@ const WineKeyword = () => {
     return (
         <>
             <Grid container direction="column" justifyContent="center" spacing={2}>
-                <FormControl sx={{ width: 300, margin: '0 auto' }}>
+                <FormControl sx={{ fontFamily: 'BlackhanSans', width: 300, margin: '0 auto' }}>
                     <Select id="demo-simple-select" value={keyword} onChange={handleSelectChange}>
                         <MenuItem value={0}>
-                            <span style={{ fontSize: '20px' }}>상황</span>
+                            <span style={{ fontFamily: 'BlackhanSans', fontSize: '20px' }}>상황</span>
                         </MenuItem>
                         <MenuItem value={1} sx={{ margin: '5px 0' }}>
-                            <span style={{ fontSize: '20px' }}>맛</span>
+                            <span style={{ fontFamily: 'BlackhanSans', fontSize: '20px' }}>맛</span>
                         </MenuItem>
                         <MenuItem value={2}>
-                            <span style={{ fontSize: '20px' }}>궁합</span>
+                            <span style={{ fontFamily: 'BlackhanSans', fontSize: '20px' }}>궁합</span>
                         </MenuItem>
                     </Select>
                 </FormControl>
@@ -103,7 +103,11 @@ const WineKeyword = () => {
                                                 onChange={handleCheckBox}
                                             />
                                         }
-                                        label={<Typography variant={'h2'}>{keyword[0]}</Typography>}
+                                        label={
+                                            <Typography style={{ fontFamily: 'BlackhanSans' }} variant={'h2'}>
+                                                {keyword[0]}
+                                            </Typography>
+                                        }
                                     />
                                 ))}
                             {keyword === 1 &&
@@ -117,7 +121,11 @@ const WineKeyword = () => {
                                                 onChange={handleCheckBox}
                                             />
                                         }
-                                        label={<Typography variant={'h2'}>{keyword[0]}</Typography>}
+                                        label={
+                                            <Typography style={{ fontFamily: 'BlackhanSans' }} variant={'h2'}>
+                                                {keyword[0]}
+                                            </Typography>
+                                        }
                                     />
                                 ))}
                             {keyword === 2 &&
@@ -131,7 +139,11 @@ const WineKeyword = () => {
                                                 onChange={handleCheckBox}
                                             />
                                         }
-                                        label={<Typography variant={'h2'}>{keyword[0]}</Typography>}
+                                        label={
+                                            <Typography style={{ fontFamily: 'BlackhanSans' }} variant={'h2'}>
+                                                {keyword[0]}
+                                            </Typography>
+                                        }
                                     />
                                 ))}
                         </FormGroup>
@@ -153,7 +165,13 @@ const WineKeyword = () => {
                                     disableElevation
                                     type="button"
                                     variant="contained"
-                                    style={{ width: 300, padding: '12px 0', borderRadius: 5, backgroundColor: '#B0A8B9' }}
+                                    style={{
+                                        fontFamily: 'BlackhanSans',
+                                        width: 300,
+                                        padding: '12px 0',
+                                        borderRadius: 5,
+                                        backgroundColor: '#B0A8B9'
+                                    }}
                                     onClick={handleSubmit}
                                 >
                                     <span style={{ fontSize: 30 }}>추천받기</span>
